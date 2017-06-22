@@ -99,6 +99,11 @@
       expect(expectedToStrings(result.expected)).toEqual(['select', 'set', 'alter', 'insert', 'create', 'show', 'use', 'drop', 'from', 'truncate', 'update', 'with']);
     });
 
+    fit('should find errors for "select * from sample_07 where and\\n\\nselect unknownCol from sample_07;"', function () {
+      var result = sqlSyntaxParser.parseSyntax('select * from sample_07 where and\n\nselect unknownCol from sample_07;', '', 'hive', true);
+      expect(result).toBeTruthy();
+    });
+
     describe('Hive specific', function () {
       it('should suggest expected words for "SLELECT "', function() {
         var result = sqlSyntaxParser.parseSyntax('SLELECT ', '', 'hive');
