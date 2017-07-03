@@ -37,6 +37,11 @@ jison sqlStatementsParser.jison
 cat license.txt sqlStatementsParser.js > ../sqlStatementsParser.js
 rm sqlStatementsParser.js
 
+echo "Creating Global Search parser..."
+jison globalSearchParser.jison
+cat license.txt globalSearchParser.js > ../globalSearchParser.js
+rm globalSearchParser.js
+
 echo "Creating SQL parser..."
 jison sql.jison sql.jisonlex
 cat license.txt sql.js > ../sql.js
