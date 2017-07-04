@@ -14,24 +14,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 (function () {
-  fdescribe('globalSearchParser.js', function () {
+  describe('globalSearchParser.js', function () {
 
     var testParser = function (beforeCursor, afterCursor, expectedResult) {
       var result = globalSearchParser.parseGlobalSearch(beforeCursor, afterCursor, true);
       expect(result).toEqual(expectedResult);
     };
 
-    it('should handle "|"', function () {
+    it('should suggest facets for "|"', function () {
       testParser('', '', {
         suggestFacets: true,
         facets: [ ]
       });
     });
 
-    it('should handle "TAGS: asdf |"', function () {
+    it('should suggest facets for "TAGS: asdf |"', function () {
       testParser('TAGS: asdf ', '', {
         suggestFacets: true,
         facets: [ 'TAGS' ]
+      });
+    });
+
+    it('should suggest facet values for "tags: |"', function () {
+      testParser('tags: ', '', {
+        suggestFacetValues: 'tags',
+        facets: []
       });
     });
   });
