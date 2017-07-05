@@ -570,7 +570,16 @@ from desktop.views import _ko
         </div>
       </div>
       <div class="global-search-preview">
-        Preview Area
+        <!-- ko with: selectedResult -->
+          <!-- ko switch: type -->
+            <!-- ko case: ['database', 'table', 'view', 'field']  -->
+              <!-- ko component: { name: 'sql-context-contents-global-search', params: { data: data } } --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko case: $default -->
+              <pre data-bind="text: ko.mapping.toJSON($data)"></pre>
+            <!-- /ko -->
+          <!-- /ko -->
+        <!--/ko -->
       </div>
       <!-- /ko -->
     </div>
@@ -837,6 +846,7 @@ from desktop.views import _ko
               data.resultHuedocuments.forEach(function (doc) {
                 docCategory.result.push({
                   label: doc.hue_name,
+                  type: 'document',
                   data: doc
                 })
               });
@@ -858,6 +868,7 @@ from desktop.views import _ko
                   }
                   category.result.push({
                     label: result.hue_name || result.originalName,
+                    type: typeLower,
                     data: result
                   })
                 }
@@ -867,7 +878,7 @@ from desktop.views import _ko
                 categories.push(newCategories[key]);
               });
             }
-
+            self.selectedIndex(undefined);
             self.searchResultCategories(categories);
           },
           silenceErrors: true,
