@@ -1,0 +1,56 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+		<script type="text/javascript" src="/static/ifrs9/js/ifrs9.js"></script>
+		<script type="text/javascript">
+			function manage_button(elem) {
+				console.log($(elem).val())
+				if($(elem).val()==='0'){
+	        $('#ifrs9_buttonAceptarConfirmacionTraspasoExclusion').addClass('button-disabled').prop('disabled', true)
+	      } else {
+	        $('#ifrs9_buttonAceptarConfirmacionTraspasoExclusion').removeClass('button-disabled').prop('disabled', false)
+	      }
+			}
+		</script>
+	</head>
+	<body>
+	<div class="ifrs9">
+		<div id="ifrs9_modalConfirmacion" class="modal modalWidth">
+			<div class="modal-content">
+				<h4>{{_('Traspaso de Exclusiones')}}</h4>
+				<input type="hidden" value="" id="id_exclusion_promocion" />
+				{% if finalidad == "2" %}
+				<div class="col-sm-12 text-center">
+					{{_('Traspasar Exclusión a')}}: {{_('Analisis')}}
+					<input type="hidden" value="1" id="traspasar_exclusion_destination" />
+				</div>
+				{% endif %}
+				{% if finalidad == "3" %}
+				<div class="row">
+						<div class="input-field col-sm-6 col-sm-offset-3">
+							<p class="modal-body">{{_('Traspasar Exclusión a')}}:</p>
+							<select id="traspasar_exclusion_destination" onchange="manage_button(this)">
+								<option value="0" disabled selected>{{_('Elige una opcion')}}</option>
+								<option value="1">{{_('Analisis')}}</option>
+								<option value="2">{{_('Preproducción')}}</option>
+							</select>
+						</div>
+				</div>
+				{% endif %}
+			</div>
+
+			<div class="modal-footer">
+				<a href="#!" id="ifrs9_buttonCancelarConfirmacion" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat ">{{_('Cancelar')}}</a>
+				{% if finalidad == "2" %}
+				  <button id="ifrs9_buttonAceptarConfirmacionTraspasoExclusion" onclick="aceptar_traspasar_exclusion()" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat">{{_('Aceptar')}}</button>
+				{% endif %}
+				{% if finalidad == "3" %}
+					<button id="ifrs9_buttonAceptarConfirmacionTraspasoExclusion" onclick="aceptar_traspasar_exclusion()" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat button-disabled" disabled>{{_('Aceptar')}}</button>
+				{% endif %}
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

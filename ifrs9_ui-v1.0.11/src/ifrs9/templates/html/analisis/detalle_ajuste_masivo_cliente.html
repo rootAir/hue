@@ -1,0 +1,189 @@
+{% load babel %} {% load l10n %}
+<div class="pagina ifrs9">
+    <div class="align-left">
+        <h4 id="ifrs9_pageTitle">
+				{% if finalidad_actual == '1' %}
+					<span id="env1">
+							{{_('Analisis')}}
+							-
+							{{ _('Detalle Ajuste Masivo LGD por Dto. de Flujos')}}
+					</span>
+				{% elif finalidad_actual == '2' %}
+					<span id="env2">
+							{{_('Pre-Produccion')}}
+							-
+							{{ _('Detalle Ajuste Masivo LGD por Dto. de Flujos')}}
+					</span>
+					{% elif finalidad_actual == '3' %}
+					<span id="env3">
+							{{_('Producción')}}
+							-
+							{{ _('Detalle Ajuste Masivo LGD por Dto. de Flujos')}}
+					</span>
+					{% endif %}
+				</h4>
+    </div>
+    <ul class="collapsible" data-collapsible="accordion" id="ifrs9_contentTableResultados">
+        <li>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="accordion-group">
+                        <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <h4 class="headerContenedor headerDetail">{{_('Cliente')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('ID Cliente')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.customer_id.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Nombre')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.customer_name.value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="headerContenedor headerDetail">{{_('Ajustes')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Usuario de Alta')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{ajuste.usuarioalta.username}}
+                                                  {%if ajuste.usuarioalta.first_name and ajuste.usuarioalta.last_name %} ({{ajuste.usuarioalta.first_name}},{{ajuste.usuarioalta.last_name}})
+                                                  {%elif ajuste.usuarioalta.first_name %} ({{ajuste.usuarioalta.first_name}})
+                                                  {%endif%}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Alta')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{ajuste.fechaalta | date:"d-m-Y"}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Finalidad')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {%if ajuste.finalidad.descripcion == 'Análisis' %}
+                                                <span>{{_('Analisis')}}</span> {%endif%} {%if ajuste.finalidad.descripcion == 'Preproducción' %}
+                                                <span>{{_('Pre-Produccion')}}</span> {%endif%} {%if ajuste.finalidad.descripcion == 'Producción' %}
+                                                <span>{{_('Produccion')}}</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Inicio')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{ajuste.fechaini | date:"d-m-Y"}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Fin')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{ajuste.fechafin | date:"d-m-Y"}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <!-- <div class="col-xs-12 col-sm-6">
+											<div class="col-xs-4 col-sm-4 ">
+												<span><b>{{_('Importe Ajustado')}}:</b></span>
+											</div>
+											<div
+												class="col-xs-8 col-sm-8">
+												{% if ajuste.importeajustado == None %}
+												<span></span>
+												{%else%}
+												<span>{{ajuste.importeajustado}}</span>
+												{%endif%}
+											</div>
+										</div> -->
+                                        <!-- <div class="col-xs-12 col-sm-6">
+											<div class="col-xs-4 col-sm-4 ">
+												<span><b>% {{_('Importe Ajustado')}}:</b></span>
+											</div>
+											<div class="col-xs-8 col-sm-8">
+												{% if ajuste.porcentajeimporteajustado == None %}
+												<span>----</span>
+												{%else%}
+												<span>{{ajuste.porcentajeimporteajustado}} </span><span style="text-transform: uppercase;">{{ajuste.moneda.moneda_id}}</span>
+												{%endif%}
+											</div>
+										</div> -->
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>% {{_('LGD Ajustada')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if ajuste.lgdajustada == None %}
+                                                <span>----</span> {%else%}
+                                                <span>{{ajuste.lgdajustada}}</span> {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="lineDetail">
+										 <div class="col-xs-12 col-sm-6">
+											<div class="col-xs-4 col-sm-4 ">
+												<span><b>{{_('Stage Ajustado')}}:</b></span>
+											</div>
+											<div
+												class="col-xs-8 col-sm-8">
+												{% if ajuste.stageajustado.descripcion == None %}
+												<span></span>
+												{%else%}
+												<span>{{ajuste.stageajustado.descripcion}}</span>
+												{%endif%}
+											</div>
+										</div>
+									</div>-->
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-12 margin-bottom15">
+                                            <div class="col-xs-4 col-sm-2">
+                                                <span><b>{{_('Comentarios')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-10" style="margin-left:-5px">
+                                                <span>{{ajuste.comentario}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 text-right padding-right0">
+                <div class="col-xs-12 col-sm-6"></div>
+                <div class="col-xs-12 col-sm-6 padding-right0">
+                    <span class="boton-botonera-inferior">
+						<button class="button-detalle-alta" onclick="cerrarAjusteDetalle();" id="ifrs9_volver">{{_('Volver')}}</button>
+					</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

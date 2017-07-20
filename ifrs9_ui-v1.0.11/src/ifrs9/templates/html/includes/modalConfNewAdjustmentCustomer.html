@@ -1,0 +1,24 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+		<script type="text/javascript" src="/static/ifrs9/js/ifrs9.js"></script>
+
+	</head>
+	<body>
+	<div class="ifrs9">
+		<div id="ifrs9_modalConfirmacion" class="modal modalWidth">
+			<div class="modal-content">
+				<h4>{{_('Confirmar Alta de ajuste')}}</h4>
+				<!-- <p class="modal-body">{{_('Si continua se moveran los ficheros de Entorno de Simulacion a Entorno Productivo No Real. ¿Esta seguro de que desea continuar?')}}</p> -->
+				<p class="modal-body">{{_('¿Esta seguro de que desea insertar este ajuste?')}}</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" id="ifrs9_buttonCancelarConfirmacion" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat ">{{_('Cancelar')}}</a>
+				<a href="javascript:void(0)" id="ifrs9_buttonAceptarConfirmacionAltaAjusteContrato" onclick="submit_new_adjustment_by_customer()" class="modal-action button-detalle-alta waves-effect waves-green btn-flat">{{_('Aceptar')}}</a>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

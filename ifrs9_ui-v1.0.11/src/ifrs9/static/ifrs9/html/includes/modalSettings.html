@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	</head>
+	<body>
+	<div class="ifrs9">
+		<div id="ifrs9_modalSettings" class="modal modalWidth">
+			<div class="modal-content padding0">
+					<div class="collapsible-header active">
+						<span class="cabFiltroLineOn">
+							<i class="fa fa-user headerIcon"></i>
+						</span>
+						<h4 class="headerContenedor cabFiltroLineOn">Administración de Usuarios</h4>
+					</div>
+				<section id="ifrs9_my-settings" class="section main-section">
+					<div>
+						<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+							<div class="input-field search-table modalSettingsSearch" id="ifrs9_filtroTabla">
+								<input id="ifrs9_inputFiltro"  class="search-table validate" type="text"></input>
+								<label for="ifrs9_inputFiltro">Buscar</label>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4"></div>
+						<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 modalSettingsAlta">
+							<button id="ifrs9_buttonNuevaFila" type="button" class="button-detalle-alta float-right">Alta</button>
+						</div>
+						<table id="ifrs9_settings-table" class="display nowrap" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>ID usuario</th>
+									<th>Nombre</th>
+									<th>Apellidos</th>
+									<th>Perfil</th>
+									<th>Activo/Inactivo</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="ifrs9_1">
+									<td class="text-left" id="ifrs9_idUsuario1">n1234</td>
+									<td class="text-left" id="ifrs9_nombre1">Antonio</td>
+									<td class="text-left" id="ifrs9_apellidos1">Guierrez</td>
+									<td class="text-center" id="ifrs9_perfil1" title="Perfil Consulta">P. Consulta</td>
+									<td class="text-center">
+										<input type="checkbox" id="ifrs9_check1" class="filled-in" disabled="disabled"></input>
+										<label class="top6" for="ifrs9_check1"></label>
+									</td>
+									<td class="text-center" id="ifrs9_botonera">
+										<a id="ifrs9_firstButton1" href="#" class="padding-right15 fa fa-trash color-icon" data-toggle="modal" data-target="#myModalDelete" title="Borrar"></a>
+										<a id="ifrs9_secondButton1" href="#" class="filaOculta padding-right15 fa fa-times color-icon" data-toggle="modal" data-target="#myModalDelete" title="Cancelar"></a>
+										<a id="ifrs9_thirdButton1" href="#" class="fa fa-pencil color-icon" title="Editar"></a>
+										<a id="ifrs9_forthButton1" href="#" class="filaOculta fa fa-floppy-o color-icon" title="Guardar"></a>
+									</td>
+								</tr>
+								<tr id="ifrs9_2">
+									<td class="text-left" id="ifrs9_idUsuario2">n32498</td>
+									<td class="text-left" id="ifrs9_nombre2">Laura</td>
+									<td class="text-left" id="ifrs9_apellidos2">Perez</td>
+									<td class="text-center" id="ifrs9_perfil2" title="Perfil Ejecución">P. Ejecución</td>
+									<td class="text-center">
+										<input type="checkbox" id="ifrs9_check2" class="filled-in active" checked="checked" disabled="disabled"></input>
+										<label class="top6" for="ifrs9_check2"></label>
+									</td>
+									<td class="text-center" id="ifrs9_botonera">
+										<a id="ifrs9_firstButton2" href="#" class="padding-right15 fa fa-trash color-icon" data-toggle="modal" data-target="#myModalDelete" title="Borrar"></a>
+										<a id="ifrs9_secondButton2" href="#" class="filaOculta padding-right15 fa fa-times color-icon" data-toggle="modal" data-target="#myModalDelete" title="Cancelar"></a>
+										<a id="ifrs9_thirdButton2" href="#" class="fa fa-pencil color-icon" title="Editar"></a>
+										<a id="ifrs9_forthButton2" href="#" class="filaOculta fa fa-floppy-o color-icon" title="Guardar"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

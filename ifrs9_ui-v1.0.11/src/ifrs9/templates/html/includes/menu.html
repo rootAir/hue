@@ -1,0 +1,277 @@
+{% load babel %}
+<div class="ifrs9">
+    {% if ctxperm.anr %}
+    <div class="searchMenu" id="ifrs9_analisisMenu">
+        <div class="searchMenu_cont" id="ifrs9_searchAccordion">
+            <div class="panel pne-filter">
+                <div class="pne-panel panel-heading panel-title">
+                    <span>{{_('Cadastro Produto')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span>{{_('ANALISIS')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Gestion de Entornos')}}</span>
+                </div>
+                {% if ctxperm.anw %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-download"></i></span>
+                    <a href="#" id="ifrs9_importar_analisis" title="{{_('Importar Reglas y Parametros')}}">{{_('Importar Reglas y Parametros')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-play"></i></span>
+                    <a href="#" id="ifrs9_ejecutar_analisis">{{_('Ejecucion y Consulta')}}</a>
+                </div>
+                {% if licencias.ajustes %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Ajustes')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_buscar_ajustes_analisis">{{_('Busqueda de Ajustes')}}</a>
+                </div>
+                {% if ctxperm.anw %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_contrato_analisis">{{_('Alta por Contrato')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.anw %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_cliente_analisis">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-book"></i></span>
+                    <a href="#" id="ifrs9_buscar_tramos_analisis">{{_('Consulta Aplicacion')}}</a>
+                </div>
+                {% endif %} {% if licencias.exclusiones %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Exclusiones')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_buscar_exclusiones_analisis">{{_('Busqueda de Exclusiones')}}</a>
+                </div>
+                {% if ctxperm.anw %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_exclusiones_contrato">{{_('Alta por Contrato')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.anw %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_exclusiones_cliente">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-book"></i></span>
+                    <a href="#" id="ifrs9_buscar_tramos_exclusion_analisis">{{_('Consulta Aplicacion')}}</a>
+                </div>
+                {% endif %} {% if licencias.consultas %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Consulta')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_consulta_contrato_analisis">{{_('Consulta por Contrato')}}</a>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_consulta_cliente_analisis">{{_('Consulta por Cliente')}}</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if ctxperm.per %}
+    <div class="searchMenu" id="ifrs9_preproduccionMenu">
+        <div class="searchMenu_cont" id="ifrs9_searchAccordion">
+            <div class="panel pne-filter">
+                <div class="pne-panel panel-heading panel-title">
+                    <span>{{_('PRE-PRODUCCION')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Gestion de Entornos')}}</span>
+                </div>
+                {% if ctxperm.pew %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-download"></i></span>
+                    <a href="#" id="ifrs9_importar_preproduccion" title="{{_('Importar Reglas y Parametros')}}">{{_('Importar Reglas y Parametros')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-play"></i></span>
+                    <a href="#" id="ifrs9_ejecutar_preproduccion">{{_('Ejecucion y Consulta')}}</a>
+                </div>
+                {% if licencias.ajustes %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Ajustes')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_buscar_ajustes_preproduccion">{{_('Busqueda de Ajustes')}}</a>
+                </div>
+                {% if ctxperm.pew %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_contrato_preproduccion">{{_('Alta por Contrato')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.pew %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_cliente_preproduccion">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-book"></i></span>
+                    <a href="#" id="ifrs9_buscar_tramos_preproduccion">{{_('Consulta Aplicacion')}}</a>
+                </div>
+                {% endif %} {% if licencias.exclusiones %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Exclusiones')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_buscar_exclusiones_preproduccion">{{_('Busqueda de Exclusiones')}}</a>
+                </div>
+                {% if ctxperm.pew %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_exclusiones_contrato_preproduccion">{{_('Alta por Contrato')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.pew %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_exclusiones_cliente_preproduccion">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-book"></i></span>
+                    <a href="#" id="ifrs9_buscar_tramos_exclusion_preproduccion">{{_('Consulta Aplicacion')}}</a>
+                </div>
+                {% endif %} {% if licencias.consultas %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Consulta')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_consulta_contrato_preproduccion">{{_('Consulta por Contrato')}}</a>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_consulta_cliente_preproduccion">{{_('Consulta por Cliente')}}</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %} {% if ctxperm.por %}
+    <div class="searchMenu" id="ifrs9_contabilizacionMenu">
+        <div class="searchMenu_cont" id="ifrs9_searchAccordion">
+            <div class="panel pne-filter">
+                <div class="pne-panel panel-heading panel-title">
+                    <span>{{_('CONTABILIZACION REAL')}}</span>
+                </div>
+                {% if licencias.ajustes %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Ajustes')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_buscar_ajustes_contabilizacion">{{_('Busqueda de Ajustes')}}</a>
+                </div>
+                {% if ctxperm.pow %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_contrato_contabilizacion">{{_('Alta por Contrato')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.pow %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_cliente_contabilizacion">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-book"></i></span>
+                    <a href="#" id="ifrs9_buscar_tramos_contabilizacion">{{_('Consulta Aplicacion')}}</a>
+                </div>
+                {% endif %} {% if licencias.exclusiones %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Exclusiones')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_buscar_exclusiones_contabilizacion">{{_('Busqueda de Exclusiones')}}</a>
+                </div>
+                {% if ctxperm.pow %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_exclusiones_contrato_contabilizacion">{{_('Alta por Contrato')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.pow %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_exclusiones_cliente_contabilizacion">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-book"></i></span>
+                    <a href="#" id="ifrs9_buscar_tramos_exclusion_contabilizacion">{{_('Consulta Aplicacion')}}</a>
+                </div>
+                {% endif %} {% if licencias.consultas %}
+                <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
+                    <span>{{_('Consulta')}}</span>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_consulta_contrato_contabilizacion">{{_('Consulta por Contrato')}}</a>
+                </div>
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-search fa-1x searchMenu_icon"></i></span>
+                    <a href="#" id="ifrs9_consulta_cliente_contabilizacion">{{_('Consulta por Cliente')}}</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="main-menu">
+        {% if ctxperm.anr %}
+        <div class="blackHoverBlack">
+            <ul>
+                <li>
+                    <a href="#" id="ifrs9_showAnalisisMenu" class="pne-page-search pne-menu-tooltip" data-toggle="tooltip" data-placement="right" title="{{_('Analisis')}}" data-original-title="{{_('Analisis')}}">
+                        <i class="menu-fa fa fa-arrows-h fa-2x"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% endif %} {% if ctxperm.per %}
+        <div class="blackHoverBlack">
+            <ul>
+                <li>
+                    <a href="#" id="ifrs9_showPreproduccionMenu" class="pne-page-search pne-menu-tooltip" data-toggle="tooltip" data-placement="right" title="{{_('Pre-Produccion')}}" data-original-title="{{_('Pre-Produccion')}}">
+                        <i class="menu-fa fa fa-expand fa-2x"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% endif %} {% if not licencias.ajustes and not licencias.exclusiones and not licencias.consultas %}
+        <div></div>
+        {% else %} {% if ctxperm.por %}
+        <div class="blackHoverBlack">
+            <ul>
+                <li>
+                    <a href="#" id="ifrs9_showContabilizacionMenu" class="pne-page-search pne-menu-tooltip" data-toggle="tooltip" data-placement="right" title="{{_('Contabilizacion Real')}}" data-original-title="{{_('Contabilizacion Real')}}">
+                        <i class="menu-fa fa fa-arrows-alt fa-2x"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% endif %} {% endif %}
+    </div>
+    <input type="hidden" name="hiddenlan" id="hiddenlan" value="{{lan}}">
+    <!-- <input type="hidden" name="hiddenNan" id="hiddenNan" value=""> -->
+</div>

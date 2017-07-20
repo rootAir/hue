@@ -1,0 +1,402 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+    <head></head>
+    <body>
+        <input type="hidden" value="{{user}}" id="user_name_logged"/>
+        <div class="pagina ifrs9">
+            <div class="align-left">
+                <h4 id="ifrs9_pageTitle">
+                    <span style="display:none" id="env1">
+                        {{_('Analisis')}}
+                        -
+                        {{ _('Ejecucion y Consulta')}}
+                    </span>
+                    <span style="display:none" id="env2">
+                        {{_('Pre-Produccion')}}
+                        -
+                        {{ _('Ejecucion y Consulta')}}
+                    </span>
+                    <span style="display:none" id="env3">
+                        {{_('Contabilizacion Real')}}
+                        -
+                        {{ _('Ejecucion y Consulta')}}
+                    </span>
+                </h4>
+            </div>
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header" id="ifrs9_cabFiltro">
+                        <span class="cabFiltroLineOn">
+                            <i class="fa fa-filter headerIcon"></i>
+                        </span>
+                        <h4 class="headerContenedor cabFiltroLineOn">{{_('Filtro')}}</h4>
+                    </div>
+                    <div class="collapsible-body fixed_Filter_overflow">
+                        <div id="ifrs9_collapseFiltrosBuscarAjustes" class="panel-body collapse in">
+                            <form id="filter_form" method="post" name="filter_form">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding-left0 padding-top10">
+                                    <div class="input-field">
+                                        <div class="col-lg-2 col-md-2  col-xs-4  col-sm-4" id="estado_ellispis">
+                                          {{form_filter.estado}}
+                                            <label class="labelnolabel">{{_('Estado')}}</label>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2  col-xs-4  col-sm-4">
+                                            <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-right0 padding-left0">
+                                                <label>{{_('Fecha Inicio')}}</label>
+                                                {{form_filter.fecha_inicio}}
+                                            </div>
+                                            <div class="col-lg-2 col-md-2  col-xs-2  col-sm-2 padding-left0" id="ifrs9_dateInicioIcon">
+                                                <i class="fa fa-calendar padding-top8"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2  col-xs-4  col-sm-4">
+                                            <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-right0 padding-left0">
+                                                <label>{{_('Fecha Fin')}}</label>
+                                                {{form_filter.fecha_fin}}
+                                            </div>
+                                            <div class="col-lg-2 col-md-2  col-xs-2  col-sm-2 padding-left0" id="ifrs9_dateFinIcon">
+                                                <i class="fa fa-calendar padding-top8"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-2 col-xs-4  col-sm-4">
+                                            <div class="input-field" id="ifrs9_buscarUsuario">
+                                                {{form_filter.usuario}}
+                                                <label>{{_('Usuario Alta')}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-xs-5  col-sm-5 switch boton-derecha">
+                                            <label>
+                                                {{_('Total')}}
+                                                <!-- {{form_filter.total}} -->
+                                                <input id="ifrs9_checkBusqFiltro" name="total" type="checkbox">
+                                                <span class="lever"></span>
+                                                {{_('Mis Ejecuciones')}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                          <hr class="hr_filters" />
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-10">
+                                <div class="alert alert-warning text-center control-class" id="panel-error">
+                                    <strong>{{_('Aviso:')}}</strong>
+                                    <span class="warning_text"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <span>
+                                    <button class="col-lg-offset-11 button-detalle-alta boton-derecha" id="ifrs9_btnBuscar">{{_('Buscar')}}</button>
+                                </span>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="collapsible" data-collapsible="accordion" id="ifrs9_contentTableResultados">
+                <li>
+                    <div class="panel panel-default">
+                        <div class="collapsible-header active">
+                            <span class="cabFiltroLineOn">
+                                <i class="fa fa-list headerIcon"></i>
+                            </span>
+                            <h4 class="headerContenedor cabFiltroLineOn">{{_('Resultados')}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="accordion-group ifrs9_accordion_fix">
+                                <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                                    <div class="accordion-inner">
+                                      <div class="loadingDivNoAjax center-loading">
+                                          <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                          <span class="sr-only">{{_('Cargando')}}...</span>
+                                      </div>
+                                        <section id="ifrs9_my-customers" class="section main-section ">
+                                            <!-- <div id="ifrs9_anadirEjecucion" class="button-header-table padding-bottom14 float-right">
+                                                <button class=" button-detalle-alta" id="ifrs9_btnBuscar">
+                                                    <span>{{_('Añadir Ejecucion')}}</span>
+                                                </button>
+                                            </div> -->
+                                            <div class="table-container ifrs9_hidden">
+                                              <input type="hidden" value="{{last_ten_executions.count}}" id="last_ten_executions_count" />
+
+                                                <table id="ifrs9_customers-table" class="display nowrap table-header-dark ifrs9_hidden" data-locale="{{lan}}">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-width="1%" data-align="center"></th>
+                                                            <th data-sortable="true" sort-order="desc" data-sorter="custom_sort">{{_('Fecha Ejecucion')}}</th>
+                                                            <th data-field="insertDate" data-sortable="true" sort-order="desc" data-sorter="custom_sort">{{_('Fecha Alta')}}</th>
+                                                            <th data-sortable="true">{{_('Estado')}}</th>
+                                                            <th data-sortable="true">{{_('Usuario Alta')}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      {% if last_ten_executions.count > 0%}
+                                                        {%for exec in last_ten_executions%}
+                                                            <tr>
+                                                                <td data-align="center">
+                                                                    <a href='javascript:void(0)' id='ifrs9_icon1' class='fa fa-eye color-icon' title='{{_('Detalle')}}'></a>
+                                                                    <input type="hidden" value="{{exec.pk}}"/></td>
+                                                                {%if exec.fechaejecucion == null%}
+                                                                    <td></td>
+                                                                    {%else%}
+                                                                    <td>{{exec.fechaejecucion | date:"d-m-Y H:i:s"}}</td>
+                                                                    {%endif%}
+                                                                    <td>{{exec.fechaalta | date:"d-m-Y"}}</td>
+                                                                    <td>{%if exec.estado.descripcion == 'Todas' %}
+                                                                      {{_('Todas')}}
+                                                                    {%endif%}
+                                                                    {%if exec.estado.descripcion == 'Planificada' %}
+                                                                      {{_('Planificada')}}
+                                                                    {%endif%}
+                                                                    {%if exec.estado.descripcion == 'En ejecución' %}
+                                                                      {{_('En ejecución')}}
+                                                                    {%endif%}
+                                                                    {%if exec.estado.descripcion == 'Finalizada' %}
+                                                                      {{_('Finalizada')}}
+                                                                    {%endif%}
+                                                                    {%if exec.estado.descripcion == 'Finalizada con error' %}
+                                                                      {{_('Finalizada con error')}}
+                                                                    {%endif%}
+                                                                    {%if exec.estado.descripcion == 'Finalizada con error de reglas/params' %}
+                                                                      {{_('Finalizada con error de reglas/params')}}
+                                                                    {%endif%}
+                                                                    {%if exec.estado.descripcion == 'Finalizada con error de Modellica' %}
+                                                                      {{_('Finalizada con error de Modellica')}}
+                                                                    {%endif%}
+                                                                  </td>
+                                                                    <td>{{exec.usuarioalta}}
+                                                                        {%if exec.usuarioalta.first_name and exec.usuarioalta.last_name %}({{exec.usuarioalta.first_name}},
+                                                                            {{exec.usuarioalta.last_name}}){%endif%}</td>
+                                                                    </tr>
+                                                                {%endfor %}
+                                                      {% else %}
+                                                                <tr class="no-records-found"><td colspan="10">{{_('No se encontraron resultados')}}</td></tr>
+                                                      {% endif %}
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    {% if envperm == '1' and ctxperm.anw or envperm == '2' and ctxperm.pew %}
+                        <form method="post" action="submit_execution/" id="submit_execution_form" name="submit_execution_form">
+                            {% csrf_token %}
+                            <input type="hidden" value="" name="new_execution_env" id="new_execution_env"/>
+                            <ul class="collapsible" data-collapsible="accordion" id="ifrs9_detalleEjecucion">
+                                <li>
+                                    <div class="collapsible-header addExecution">
+                                        <span class="cabFiltroLineOn">
+                                            <i class="fa fa-plus headerIcon"></i>
+                                        </span>
+                                        <h4 class="headerContenedor cabFiltroLineOn">{{_('Alta de Ejecucion')}}</h4>
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <div class="accordion-group ifrs9_accordion_fix">
+                                            <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                                                <div class="accordion-inner">
+                                                    <section id="ifrs9_my-contratos-cliente" class="section main-section">
+                                                        <div class="fila-cabecera margin-bottom80">
+                                                            <div class="input-field col-lg-12 col-md-12  col-xs-12  col-sm-12">
+                                                                <div class="col-lg-6 col-md-6  col-xs-6  col-sm-6 paddingtop25">
+                                                                    <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1 padding-right0 margin-right10">
+                                                                        <a href="javascript:void(0)" class="fa fa-list-alt color-icon" id="ifrs9_iconSeleccionarOper" title="{{_('Seleccionar')}}"></a>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
+                                                                        <input id="ifrs9_inputOperacionesSeleccionadas" class="search-table validate form-field-execution" type="text" disabled></input>
+                                                                        <input type="hidden" id="ifrs9_ops_selected_id" name="ops_selected_id" value=""/>
+                                                                        <label for="ifrs9_inputOperacionesSeleccionadas">{{_('Selecciona operaciones')}}</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="ifrs9_motivoEjecucion" class="col-lg-6 col-md-6  col-xs-6  col-sm-6">
+                                                                    <textarea
+                                                                        class="materialize-textarea form-field-execution validate"
+                                                                        cols="40"
+                                                                        name="desc_param_{{elem.tipoproyecto.id}}"
+                                                                        id="ifrs9_motivo"
+                                                                        length="250"
+                                                                        name="motivo"
+                                                                        rows="10"
+                                                                        required
+                                                                        onkeyup="resizeTextArea(this)"
+                                                                        onblur="resizeTextArea(this);checkDescLengthEjecutar(this);enableRunButton()"
+                                                                        onpaste="resizeTextArea(this);checkDescLengthEjecutar(this);enableRunButton()"></textarea>
+                                                                    <label for="ifrs9_motivo" class="left15 ">{{_('Descripcion Ejecucion')}}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <table id="ifrs9_contratos-table" class="display nowrap table-header-dark" data-locale="{{lan}}">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>{{_('Proyecto')}}</th>
+                                                                    <th>{{_('Tipo de Fichero')}}</th>
+                                                                    <th>{{_('Nombre Fichero')}}</th>
+                                                                    <th>{{_('Descripcion')}}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {%for elem in projects%}
+                                                                    <tr>
+                                                                      {%if elem.tipoproyecto.descripcion == 'Asignación de parámetros' %}
+                                                                      <td class="text-left">{{_('Asignacion de parametros')}}</td>
+                                                                      {%elif elem.tipoproyecto.descripcion == 'Cálculo de provisiones' %}
+                                                                      <td class="text-left">{{_('Cálculo de provisiones')}}</td>
+                                                                      {% else %}
+                                                                      <td class="text-left">{{elem.tipoproyecto.descripcion}}</td>
+                                                                      {%endif%}
+                                                                        <td class="text-left">{{_('Reglas')}}</td>
+                                                                        <td id="ifrs9_botonModal">
+                                                                            <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1 padding-right0 margin-right10">
+                                                                                <a href="javascript:void(0)" onclick="getRules({{elem.pk}}, 'rules_{{elem.pk}}')" class=" fa fa-list-alt color-icon" id="ifrs9_iconSeleccionarRegla_{{elem.pk}}" title="{{_('Seleccionar')}}"></a>
+                                                                            </div>
+                                                                            <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
+                                                                                <input id="ifrs9_rules_{{elem.pk}}" placeholder="{{_('Selecciona reglas')}}" class="search-table validate minWidthInput margin-right10 form-field-execution" type="text" readonly></input>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="text-left">
+                                                                            <div class="ellipsis ellipsis_desc"  title=""></div>
+                                                                            <input class="form-field-execution" type="hidden" value="" name="id_rules_{{elem.pk}}"/></td>
+
+                                                                    </tr>
+                                                                    {%if elem.indparametros == True%}
+                                                                        <tr >
+                                                                            {%if elem.tipoproyecto.descripcion == 'Asignación de parámetros' %}
+                                                                            <td class="text-left">{{_('Asignacion de parametros')}}</td>
+                                                                            {%elif elem.tipoproyecto.descripcion == 'Cálculo de provisiones' %}
+                                                                            <td class="text-left">{{_('Cálculo de provisiones')}}</td>
+                                                                            {% else %}
+                                                                            <td class="text-left">{{elem.tipoproyecto.descripcion}}</td>
+                                                                            {%endif%}
+                                                                            <td class="text-left">{{_('Parametros')}}</td>
+                                                                            <td id="ifrs9_botonModal">
+                                                                                <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1 padding-right0 margin-right10">
+                                                                                    <a href="javascript:void(0)" onclick="getParameters({{elem.pk}}, 'params_{{elem.pk}}')" class="fa fa-list-alt color-icon" id="ifrs9_iconSeleccionarRegla_{{elem.pk}}" title="{{_('Seleccionar')}}"></a>
+                                                                                </div>
+                                                                                <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
+                                                                                    <input id="ifrs9_params_{{elem.pk}}" placeholder="{{_('Selecciona parametros')}}" class="search-table validate minWidthInput margin-right10 form-field-execution" type="text" readonly></input>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="text-left">
+                                                                                <div class="ellipsis ellipsis_desc" title=""></div>
+                                                                                <input class="form-field-execution" type="hidden" value="" name="id_params_{{elem.pk}}"/></td>
+                                                                        </tr>
+                                                                        {% endif%}
+                                                                        {%endfor%}
+                                                                    </tbody>
+                                                                </table>
+                                                            </section>
+                                                            <div class="col-xs-12 col-sm-12">
+                                                              <hr class="hr_filters" />
+                                                              <div class="row">
+                                                                <div class="col-xs-12 col-sm-10">
+                                                                    <div class="alert alert-warning text-center control-class" id="panel-error-ejecutar">
+                                                                        <strong>{{_('Aviso:')}}</strong>
+                                                                        <span class="warning_text-ejecutar"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-2">
+                                                                    <span>
+                                                                      <button type="button" class="col-lg-offset-11 button-detalle-alta boton-derecha button-disabled" id="ifrs9_btnEjecutar" disabled>{{_('Ejecutar')}}</button>
+                                                                    </span>
+                                                                  </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                                {% endif%}
+                            </div>
+                            <div id="ifrs9_myModalConfirmacion"></div>
+                            <div id="ifrs9_myModalParam"></div>
+                            <div id="ifrs9_myModalReglas"></div>
+                            <div id="ifrs9_myModalOper"></div>
+                            <div id="ifrs9_executionDetail">
+
+                                <div class="modal">
+                                    <a href="#!" class="modal-action modal-close x-symbol">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                    <h4 class="headerContenedor cabFiltroLineOn">{{_('Informacion de la Ejecucion')}}</h4>
+                                    <div class="modal_content">
+                                        <div class="accordion-group ifrs9_accordion_fix">
+                                            <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                                                <div class="accordion-inner">
+                                                  <div class="loadingDiv ifrs9_hidden center-loading">
+                                                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                                      <span class="sr-only">{{_('Cargando')}}...</span>
+                                                  </div>
+                                                    <section id="ifrs9_my-ajustes" class="section main-section">
+                                                        <div>
+                                                            <div>
+                                                                <div class="input-field col-lg-12 col-md-12  col-xs-12 col-sm-12 contextData">
+                                                                    <div class="col-lg-4 col-md-4  col-xs-4 col-sm-4 padding-left0">
+                                                                        <div class="col-xs-7 col-sm-7 ">
+                                                                            <span>
+                                                                                <b>{{_('Fichero de Operaciones')}}:</b>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="col-xs-5 col-sm-5">
+                                                                            <span id="execution_name"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-8 col-md-8  col-xs-8 col-sm-8 padding-left0">
+                                                                        <div class="col-xs-4 col-sm-4 ">
+                                                                            <span title="{{_('Descripcion de la ejecucion')}}">
+                                                                                <b>{{_('Descrip. de la ejecucion')}}:</b>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="col-xs-8 col-sm-8">
+                                                                            <span id="execution_desc"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <table id="ifrs9_ajustes-table" class="display nowrap table-header-dark" data-locale="{{lan}}">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th data-sortable="true">{{_('Proyecto')}}</th>
+                                                                        <th data-sortable="true">{{_('Tipo de Fichero')}}</th>
+                                                                        <th data-sortable="true">{{_('Nombre Fichero')}}</th>
+                                                                        <th data-sortable="true">{{_('Fecha Importacion')}}</th>
+                                                                        <th data-sortable="false">{{_('Descripcion')}}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="success_message">
+                                <div class="alert alert-success  text-center" id="panel-success">
+                                    <strong>{{_('CORRECTO')}}</strong><br/>
+                                    {{_('Ejecucion añadida correctamente')}}
+                                </div>
+                            </div>
+                            <div class="warning_message">
+                                <div class="alert alert-warning  text-center" id="panel-warning">
+                                    <strong>{{_('AVISO')}}</strong><br/>
+                                    {{_('El numero maximo de ejecuciones planificadas es ')}}{{max_executions_environment}}{{_('. No se pudo añadir la ultima ejecucion')}}
+                                </div>
+                            </div>
+                            <input type="hidden" name="hiddenlan" id="hiddenlan" value="{{lan}}">
+                            <input type="hidden" name="hiddenexecutions" id="hiddenexecutions" value="{{max_executions_environment}}">
+                        </body>
+                    </html>

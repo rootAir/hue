@@ -1,0 +1,41 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+        <!-- Modal PARAMETROS SUBIDA -->
+        <input type="hidden" id="sourceField" value=""/>
+        <div id="ifrs9_modalParametrosSubida" class="modal modalWidth">
+          <a href="#!" class="modal-action modal-close  x-symbol"><i class="fa fa-times"></i></a>
+            <div class="modal-content">
+                <div class="collapsible-header active">
+                    <span class="cabFiltroLineOn">
+                        <i class="fa fa-files-o headerIcon"></i>
+                    </span>
+                    <h4 class="headerContenedor cabFiltroLineOn">{{_('Listado de Parametros Disponible')}}</h4>
+                    <button id="ifrs9_btnSeleccionarParam" type="button" style="float:right" class="button-detalle-alta pull-right button-fix button-disabled ifrs9_hidden" onclick="selectParameter()" disabled>{{_('Seleccionar')}}</button>
+                </div>
+                <section id="ifrs9_my-listado-param" class="section main-section">
+                  <div class="loadingDiv center-loading">
+      							<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      							<span class="sr-only">{{_('Cargando')}}...</span>
+      					</div>
+      					<div class="show-hide-table ifrs9_hidden">
+                        <table id="ifrs9_listado-param-table_subida" class="display nowrap table-header-dark" data-locale="{{lan}}">
+                            <thead>
+                                <tr>
+																	  <th data-sortable="true">{{_('Nombre Fichero')}}</th>
+                                    <th data-sortable="true">{{_('Tamaño')}} (Bytes)</th>
+																		<th data-field="lastUpdate" data-sortable="true" sort-order="desc" data-sorter="custom_sort">{{_('Ultima Actualizacion')}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

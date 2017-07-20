@@ -1,0 +1,47 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+</head>
+
+<body>
+    <div class="ifrs9">
+        <!-- Modal REGLAS -->
+        <div id="ifrs9_modalOperaciones" class="modal modalWidth">
+            <a href="#!" class="modal-action modal-close x-symbol">
+                <i class="fa fa-times"></i>
+            </a>
+            <div class="modal-content padding0">
+                <div class="collapsible-header active">
+                    <span>
+                            <i class="fa fa-files-o headerIcon"></i>
+                        </span>
+                    <h4 class="headerContenedor">{{_('Listado de Operaciones Disponible')}}</h4>
+                    <button id="ifrs9_btnSeleccionarOperaciones" type="button" class="button-detalle-alta pull-right button-fix button-disabled ifrs9_hidden" disabled>{{_('Seleccionar')}}</button>
+                </div>
+                <section id="ifrs9_my-listado-operaciones" class="section main-section">
+                    <div class="loadingDiv center-loading">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        <span class="sr-only">{{_('Cargando')}}...</span>
+                    </div>
+                    <div class="show-hide-table ifrs9_hidden">
+                        <table id="ifrs9_listado-operaciones-table" class="display nowrap table-header-dark" data-locale="{{lan}}">
+                            <thead>
+                                <tr>
+                                    <th data-field="operations" data-sortable="true" sort-order="desc" data-sorter="custom_sort_one_column">{{_('Operaciones')}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

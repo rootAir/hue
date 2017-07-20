@@ -1,0 +1,401 @@
+{% load babel %}
+{% load l10n %}
+<div class="pagina ifrs9">
+    <div class="align-left">
+        <h4 id="ifrs9_pageTitle">
+			{% if finalidad == '1' %}
+				<span id="env1">
+						{{_('Analisis')}}
+						-
+						{{ _('Detalle Ejecucion Cliente')}}
+				</span>
+			{% elif finalidad == '2' %}
+				<span id="env2">
+						{{_('Pre-Produccion')}}
+						-
+						{{ _('Detalle Ejecucion Cliente')}}
+				</span>
+				{% elif finalidad == '3' %}
+				<span id="env3">
+						{{_('Producción')}}
+						-
+						{{ _('Detalle Ejecucion Cliente')}}
+				</span>
+				{% endif %}
+		</h4>
+    </div>
+    <ul class="collapsible" data-collapsible="accordion" id="ifrs9_contentTableResultados">
+        <li>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="accordion-group">
+                        <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <h4 class="headerContenedor headerDetail">{{_('Contrato')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('ID Contrato')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{datos.contract_id.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <!-- <div class="col-xs-4 col-sm-4 ">
+																				<span><b>{{_('Primer Titular')}}:</b></span>
+																			</div>
+																			<div
+																				class="col-xs-8 col-sm-8">
+																				<span></span>
+																			</div> -->
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Entidad')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.entity.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Centro')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.branch.value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Producto')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.product.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Subproducto')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.subproduct.value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Agrup. Producto')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.product_grouper.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('EAD')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>
+																					{% if datos.amount.value %}
+																					<span>{{datos.amount.value}} {{detalle.currency.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Modelo Scoring/Rating')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>
+																					{% if detalle.type_of_scoring_rating_model.value %}
+																					<span>{{detalle.type_of_scoring_rating_model.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6"> </div>
+                                    </div>
+                                </div>
+                                <h4 class="headerContenedor headerDetail">{{_('Cliente')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('ID Cliente')}} ({{_('Primer Titular')}}):</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if info_cliente.customer_id.value %}
+                                                <span>{{info_cliente.customer_id.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Nombre')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if info_cliente.customer_name.value %}
+                                                <span>{{info_cliente.customer_name.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Estado FEVE')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if info_cliente.feve_status.value %}
+                                                <span>{{info_cliente.feve_status.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Estado FEVE')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if info_cliente.feve_status_date.value %}
+                                                <span>{{info_cliente.feve_status_date.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Nivel FEVE')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if info_cliente.feve_level.value %}
+                                                <span>{{info_cliente.feve_level.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Nivel FEVE')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if info_cliente.feve_level_date.value %}
+                                                <span>{{info_cliente.feve_level_date.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="headerContenedor headerDetail">{{_('Calculos')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Ejecucion')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.data_timestamp_part.value %}
+                                                <span>{{ datos.data_timestamp_part.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Cartera IFRS9')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.id_portfolio_ifrs9.value %}
+                                                <span>{{datos.id_portfolio_ifrs9.value}}</span> {%else%}
+                                                <span>----</span> {%endif%}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6"></div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <h4 class="headerContenedor headerDetail">{{_('Datos obtenidos por el motor')}}</h4>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <h4 class="headerContenedor headerDetail">{{_('Datos Finales')}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span title="{{_('Importe Provision')}}"><b>{{_('Importe Provision')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.importe.value %}
+                                                <span>{{datos.importe.value}} <span style="text-transform:uppercase">{{detalle.currency.value}}</span></span>
+                                                {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span title="{{_('Importe Provision')}}"><b>{{_('Importe Provision')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.importe.ajuste != "" and datos.importe.ajuste != NaN_msg and datos.importe.ajuste != '----' %}
+                                                <span>{{datos.importe.ajuste}} <span style="text-transform:uppercase">{{detalle.currency.value}}
+                                                  {% if datos.importe.value == datos.importe.ajuste and datos.importe.directo == "1" %} (D)
+                                                  {% elif datos.importe.value == datos.importe.ajuste and datos.importe.directo == "0" %} (NA)
+                                                  {% elif datos.importe.value != datos.importe.ajuste and datos.importe.directo == "1" %} (D)
+                                                  {% else %} (I)
+                                                  {% endif %}
+                                                  </span></span>
+                                                {%else%}
+                                                  {% if datos.importe.value != NaN_msg and datos.importe.value != "" and datos.importe.value != '----' %}
+                                                    <span>{{datos.importe.value}} (NA)</span>
+                                                  {%else%}
+                                                   <span>----</span>
+                                                 {%endif%}
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {% if datos.porcentaje.directo == '1' and datos.porcentaje.pct_in != '' and datos.porcentaje.pct_in != NaN_msg %}
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span title="% {{_('Importe')}}"><b>% {{_('Importe')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{datos.porcentaje.pct_in}}
+                                                  {% if datos.porcentaje.directo == "1" %} (D)
+                                                  {% else %} (I)
+                                                  {% endif %}
+                                                  </span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endif%}
+
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Stage')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.stage.value %}
+                                                <span>{{datos.stage.value}}</span>
+                                                {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Stage')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                              {% if datos.stage.ajuste != "" and datos.stage.ajuste != NaN_msg %}
+                                              <span>{{datos.stage.ajuste}}
+                                                {% if datos.stage.value == datos.stage.ajuste and datos.stage.directo == "0" %} (NA)
+                                                {% elif datos.stage.value == datos.stage.ajuste and datos.stage.directo == "1" %} (D)
+                                                {% elif datos.stage.value != datos.stage.ajuste and datos.stage.directo == "0" and datos.exclusion_30d.value == "Y" %} (E)
+                                                {% elif datos.stage.value != datos.stage.ajuste and datos.stage.directo == "1" %} (D)
+                                                {% else %} (I)
+                                                {% endif %}
+                                                </span>
+                                              {%else%}
+                                                {% if datos.stage.value != NaN_msg and datos.stage.value != "" %}
+                                                  <span>{{datos.stage.value}} (NA)</span>
+                                                {%else%}
+                                                  <span>----</span>
+                                                {%endif%}
+                                              {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('LGD')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.lgd.value %}
+                                                <span>{{datos.lgd.value}}</span>
+                                                {%else%}
+                                                <span>----</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('LGD')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {% if datos.lgd.ajuste != "" and datos.lgd.ajuste != NaN_msg and datos.lgd.ajuste != '----' %}
+                                                <span>
+                                                  {% if datos.lgd.value == datos.lgd.ajuste and datos.lgd.directo == "0" %}{{datos.lgd.ajuste}} (NA)
+                                                  {% elif datos.lgd.value == datos.lgd.ajuste and datos.lgd.directo == "1" %}{{datos.lgd.ajuste}} (D)
+                                                  {% elif datos.lgd.value != datos.lgd.ajuste and datos.lgd.directo == "1" %}{{datos.lgd.ajuste}} (D)
+                                                  {% elif datos.lgd.value != datos.lgd.ajuste and datos.lgd.directo == "0" %}{{datos.lgd.value}} (NA)
+                                                  {% else %} ----
+                                                {% endif %}
+                                                </span>
+                                                {%else%}
+                                                  {% if datos.lgd.value != NaN_msg and datos.lgd.value != "" and datos.lgd.value != '----' %}
+                                                    <span>{{datos.lgd.value}} (NA)</span>
+                                                  {%else%}
+                                                    <span>---- (NA)</span>
+                                                  {%endif%}
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail"></div>
+                                    <div class="lineDetail" id="ifrs9_indicador_leyenda">
+                                      <div class="col-sm-12 col-xs-12">
+                                        <div class="col-xs-2 col-sm-2">
+                                              <span>{{_('Indicador del Ajuste')}}:</span>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2">
+                                              <span>({{_('NA')}}):</span>
+                                              <span>{{_('No Ajustado')}}</span>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2">
+                                              <span>({{_('D')}}):</span>
+                                              <span>{{_('Directo')}}</span>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2">
+                                              <span>({{_('I')}}):</span>
+                                              <span>{{_('Indirecto')}}</span>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2">
+                                              <span>({{_('E')}}):</span>
+                                              <span>{{_('Exclusion')}}</span>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 text-right padding-right0">
+                <div class="col-xs-12 col-sm-6"></div>
+                <div class="col-xs-12 col-sm-6 padding-right0">
+                  <span class="boton-botonera-inferior">
+        						<button class="button-detalle-alta" onclick="volver_al_listado();" id="ifrs9_volver">{{_('Volver')}}</button>
+        					</span>
+                <br><br>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

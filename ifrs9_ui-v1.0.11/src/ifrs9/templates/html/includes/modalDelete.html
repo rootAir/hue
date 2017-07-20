@@ -1,0 +1,20 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	</head>
+	<body>
+	<div class="ifrs9">
+		<div id="ifrs9_modalDelete" class="modal modalWidth">
+			<div class="modal-content">
+				<h4>{{_('Alerta Borrado Registro')}}</h4>
+				<p class="modal-body">{{_('¿Esta seguro de que desea borrar el registro seleccionado?')}}</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" id="ifrs9_buttonValidarModal" class="modal-action button-detalle-alta modal-close waves-effect waves-green btn-flat ">{{_('Cancelar')}}</a>
+				<button type="button" id="confirm_delete_button" class="modal-action button-detalle-alta modal-close waves-effect waves-green btn-flat ">{{_('Aceptar')}}</button>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

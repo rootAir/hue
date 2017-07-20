@@ -1,0 +1,208 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+    </head>
+    <body>
+        <input type="hidden" value="{{user}}" id="user_name_logged"/>
+        <div class="pagina ifrs9">
+            <div class="align-left">
+                <h4 id="ifrs9_pageTitle">
+                  <span style="display:none" id="env1">
+                      {{_('Analisis')}}
+                      -
+                      {{ _('Buscar Exclusiones')}}
+                  </span>
+                  <span style="display:none" id="env2">
+                      {{_('Pre-Produccion')}}
+                      -
+                      {{ _('Buscar Exclusiones')}}
+                  </span>
+                  <span style="display:none" id="env3">
+                      {{_('Contabilizacion Real')}}
+                      -
+                      {{ _('Buscar Exclusiones')}}
+                  </span>
+                </h4>
+            </div>
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header active" id="ifrs9_cabFiltro">
+                        <span class="cabFiltroLineOn">
+                            <i class="fa fa-filter headerIcon"></i>
+                        </span>
+                        <h4 class="headerContenedor cabFiltroLineOn">{{_('Filtro')}}</h4>
+                    </div>
+                    <div class="collapsible-body">
+                        <div id="ifrs9_collapseFiltrosBuscarAjustes" class="panel-body collapse in">
+                            <form id="form_buscar_exclusiones" action="buscar_exclusiones/" name="form_buscar_exclusiones" type="post">
+                                {% csrf_token %}
+                                {{form_busq.environment}}
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding-left0 padding-top10">
+                                    <div class="input-field">
+                                        <div class="col-lg-3 col-md-3  col-xs-4  col-sm-4">
+                                            {{form_busq.finalidad}}
+                                            <label class="labelnolabel">{{_('Finalidad')}}:</label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3  col-xs-4  col-sm-4">
+                                            {{form_busq.tipo_ajuste}}
+                                            <label class="labelnolabel">{{_('Tipo de exclusion')}}:</label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-xs-4  col-sm-4">
+                                            <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-right0 padding-left0">
+                                                <label>{{_('Fecha Inicio')}}:</label>
+                                                {{form_busq.fecha_inicio}}
+                                            </div>
+                                            <div class="col-lg-2 col-md-2  col-xs-2  col-sm-2 padding-left0" id="ifrs9_dateInicioIcon">
+                                                <i class="fa fa-calendar padding-top8"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3  col-xs-4  col-sm-4">
+                                            <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-right0 padding-left0">
+                                                <label>{{_('Fecha Fin')}}:</label>
+                                                {{form_busq.fecha_fin}}
+                                            </div>
+                                            <div class="col-lg-2 col-md-2  col-xs-2  col-sm-2 padding-left0" id="ifrs9_dateInicioIcon">
+                                                <i class="fa fa-calendar padding-top8"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-2  col-xs-4  col-sm-4  boton-derecha"></div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div id="ifrs9_IDClienteContrato" class="col-lg-4 col-md-4 col-xs-4 col-sm-4 filaOculta">
+                                    <div class="input-field" id="ifrs9_buscarAjustesTipoBusquedaCliente">
+                                        <input id="ifrs9_idCliente" type="text" class="validate"></input>
+                                        <label for="ifrs9_idCliente">{{_('ID Cliente')}}</label>
+                                    </div>
+                                    <div class="input-field filaOculta" id="ifrs9_buscarAjustesTipoBusquedaContrato">
+                                        <input id="ifrs9_idContrato" type="text" class="validate"></input>
+                                        <label for="ifrs9_idContrato">{{_('ID Contrato')}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding-left0 padding-top10">
+                                  <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4">
+                                    <div class="input-field" id="ifrs9_idClienteBusquedaAjustes">
+                                        {{form_busq.id_cliente}}
+                                          <label for="ifrs9_idCliente">{{_('ID Cliente')}}:</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-3 col-md-3  col-xs-4  col-sm-4">
+                                    <div class="input-field" id="ifrs9_idContratoBusquedaAjustes">
+                                        {{form_busq.id_contrato}}
+                                          <label for="ifrs9_idContrato">{{_('ID Contrato')}}:</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4">
+                                      <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-right0 padding-left0">
+                                        <div class="input-field" id="ifrs9_usuarioAlta">
+                                            {{form_busq.usuario_alta}}
+                                              <label>{{_('Usuario Alta')}}:</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2  col-xs-2  col-sm-2 padding-left0">
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-3 col-md-3  col-xs-4  col-sm-4 switch">
+                                      <label>
+                                          {{_('Total')}}
+                                          <input type="checkbox" id="ifrs9_checkBusqFiltro"></input>
+                                          <span class="lever"></span>
+                                          {{_('Mis Exclusiones')}}
+                                      </label>
+                                  </div>
+                                  <div class="col-lg-2 col-md-2  col-xs-4  col-sm-4"></div>
+                              </div>
+                              <br/>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                          <hr class="hr_filters" />
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-10">
+                                <div class="alert alert-warning text-center control-class" id="panel-error">
+                                    <strong>{{_('Aviso:')}}</strong>
+                                    <span class="warning_text"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <span>
+                                    <button class="col-lg-offset-11 button-detalle-alta boton-derecha" id="ifrs9_btnBuscarExclusiones">{{_('Buscar')}}</button>
+                                </span>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="collapsible filaOculta" data-collapsible="accordion" id="ifrs9_contentTableResultados">
+                <li>
+                    <div class="panel panel-default">
+                        <div class="collapsible-header active">
+                            <span class="cabFiltroLineOn">
+                                <i class="fa fa-list headerIcon"></i>
+                            </span>
+                            <h4 class="headerContenedor cabFiltroLineOn">{{_('Resultados')}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="accordion-group ifrs9_accordion_fix">
+                                <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                                    <div class="accordion-inner">
+                                        <section id="ifrs9_my-customers" class="section main-section">
+                                            <div class="loadingDiv center-loading">
+                                                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                                <span class="sr-only">{{_('Cargando')}}...</span>
+                                            </div>
+                                            <div class="show-hide-table ifrs9_hidden">
+                                                <table id="ifrs9_customers-table" class="display nowrap table-header-dark ifrs9_hidden" data-locale="{{lan}}">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-width="1%" data-align="center"></th>
+                                                            <th data-sortable="true">{{_('Finalidad')}}</th>
+                                                            <th data-sortable="true">{{_('Tipo de Exclusion')}}</th>
+                                                            <th data-sortable="true">{{_('ID')}}</th>
+                                                            <th data-sortable="true" data-field="lastIniExclu" sort-order="desc" data-sorter="custom_sort">{{_('Fecha Inicio')}}</th>
+                                                            <th data-sortable="true" sort-order="desc" data-sorter="custom_sort">{{_('Fecha Fin')}}</th>
+                                                            <th data-sortable="true">{{_('Origen')}}</th>
+                                                            <th data-sortable="true">{{_('Usuario Alta')}}</th>
+                                                            {% if envperm == '1' and ctxperm.anw or envperm == '2' and ctxperm.pew or envperm == '3' and ctxperm.pow %}
+                                                            <th>{{_('Acciones')}}</th>
+                                                            {% endif %}
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="detalle_exclusion_general"></div>
+				<div class="success_message">
+						<div class="alert alert-success  text-center" id="panel-success">
+								<strong>{{_('CORRECTO')}}</strong><br/>
+								<span id="mensaje_success"></span>
+						</div>
+				</div>
+				<div class="error_message">
+						<div class="alert alert-error  text-center" id="panel-error">
+								<strong>{{_('ERROR')}}</strong><br/>
+								<span id="mensaje_error"></span>
+						</div>
+				</div>
+        <!-- Modal Structure -->
+        <div id="ifrs9_myModalDelete"></div>
+        <div id="ifrs9_myModalPromotion"></div>
+        <div id="ifrs9_myModalTraspaso"></div>
+        <input type="hidden" name="hiddenlan" id="hiddenlan" value="{{lan}}">
+        <input type="hidden" name="envperm" id="envperm" value="{{envperm}}">
+        <input type="hidden" name="ctxperm" id="ctxperm" value="{{ctxperm}}">
+    </body>
+</html>

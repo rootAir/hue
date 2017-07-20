@@ -1,0 +1,900 @@
+# English (United States) translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-03-03 13:54+0100\n"
+"PO-Revision-Date: 2017-03-02 04:20-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en_US <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+msgid "ANALISIS"
+msgstr "ANALYSIS"
+
+msgid "Gestion de Entornos"
+msgstr "Environment Management"
+
+msgid "Importar Reglas y Parametros"
+msgstr "Import Rules and Parameters"
+
+msgid "Ejecucion y Consulta"
+msgstr "Execution and Search"
+
+msgid "Ajustes"
+msgstr "Adjustments"
+
+msgid "Busqueda de Ajustes"
+msgstr "Search Adjustments"
+
+msgid "Alta por Contrato"
+msgstr "Add by Contract"
+
+msgid "Alta por Cliente"
+msgstr "Add by Customer"
+
+msgid "Consulta Aplicacion"
+msgstr "Check Application"
+
+msgid "Exclusiones"
+msgstr "Exclusions"
+
+msgid "Busqueda de Exclusiones"
+msgstr "Exclusions Search"
+
+msgid "Consulta"
+msgstr "Search"
+
+msgid "Consulta por Contrato"
+msgstr "Search by Contract"
+
+msgid "Consulta por Cliente"
+msgstr "Search by Customer"
+
+msgid "PRE-PRODUCCION"
+msgstr "PRE-PRODUCTION"
+
+msgid "CONTABILIZACION REAL"
+msgstr "PRODUCTION"
+
+msgid "Buscar Ajustes"
+msgstr "Adjustments Search"
+
+msgid "Filtro"
+msgstr "Filter"
+
+msgid "Finalidad"
+msgstr "Purpose"
+
+msgid "Analisis"
+msgstr "Analysis"
+
+msgid "Pre-Produccion"
+msgstr "Pre-Production"
+
+msgid "Contabilizacion Real"
+msgstr "Production"
+
+msgid "Tipo de busqueda"
+msgstr "Search type"
+
+msgid "Todo"
+msgstr "All"
+
+msgid "Cliente"
+msgstr "Customer"
+
+msgid "Contrato"
+msgstr "Contract"
+
+msgid "Tipo de ajuste"
+msgstr "Adjustment type"
+
+msgid "Masivo Contrato"
+msgstr "Massive Contract"
+
+msgid "Masivo Cliente"
+msgstr "Massive Customer"
+
+msgid "Fecha Inicio:"
+msgstr "Start Date:"
+
+msgid "Fecha Fin:"
+msgstr "End Date:"
+
+msgid "Total"
+msgstr "All"
+
+msgid "Mis Ajustes"
+msgstr "My Adjustments"
+
+msgid "ID Cliente"
+msgstr "Customer ID"
+
+msgid "ID Contrato"
+msgstr "Contract ID"
+
+msgid "Usuario Alta"
+msgstr "Created by"
+
+msgid "Buscar"
+msgstr "Search"
+
+msgid "Resultados"
+msgstr "Results"
+
+msgid "Tipo de Ajuste"
+msgstr "Adjustment Type"
+
+msgid "ID"
+msgstr "Identifier"
+
+msgid "Entidad"
+msgstr "Entity"
+
+msgid "Fecha Inicio"
+msgstr "Start Date"
+
+msgid "Fecha Fin"
+msgstr "End Date"
+
+msgid "Datos Finales"
+msgstr "Final Data"
+
+msgid "Origen"
+msgstr "Origin"
+
+msgid "Usuario de Alta"
+msgstr "Created by"
+
+msgid "Acciones"
+msgstr "Actions"
+
+msgid "Reglas"
+msgstr "Rules"
+
+msgid "Asignación de parametros"
+msgstr "Parameter assignment"
+
+msgid "Fichero de reglas"
+msgstr "Rules File"
+
+msgid "Descripcion"
+msgstr "Description"
+
+msgid "Cálculo de provisiones"
+msgstr "Provision calculation"
+
+msgid "Parametros"
+msgstr "Parameters"
+
+msgid "Subir ficheros de parametros"
+msgstr "Upload parameter files"
+
+msgid "Importar"
+msgstr "Import"
+
+msgid "Estado"
+msgstr "Status"
+
+msgid "En Ejecucion"
+msgstr "Executing"
+
+msgid "Finalizado"
+msgstr "Finished"
+
+msgid "Solicitado"
+msgstr "Requested"
+
+msgid "Usuario"
+msgstr "User"
+
+msgid "Mis Ejecuciones"
+msgstr "My Executions"
+
+msgid "Añadir Ejecucion"
+msgstr "Add Execution"
+
+msgid "Fecha"
+msgstr "Date"
+
+msgid "Alta de Ejecucion"
+msgstr "Add Execution"
+
+msgid "Seleccionar"
+msgstr "Select"
+
+msgid "Selecciona operaciones"
+msgstr "Select operations"
+
+msgid "Descripcion Ejecucion"
+msgstr "Execution Description"
+
+msgid "Tipo de Proyecto"
+msgstr "Project Type"
+
+msgid "Tipo de Fichero"
+msgstr "File Type"
+
+msgid "Fichero"
+msgstr "File"
+
+msgid "Ejecutar"
+msgstr "Execute"
+
+msgid "Informacion de la Ejecucion"
+msgstr "Execution Information"
+
+msgid "Fichero de Operaciones"
+msgstr "Operations File"
+
+msgid "Nombre de fichero de operaciones"
+msgstr "Name of the operations file"
+
+msgid "Descrip. de la ejecucion"
+msgstr "Execution Descrip."
+
+msgid "Descripcion de la ejecucion"
+msgstr "Execution Description"
+
+msgid "Proyecto"
+msgstr "Project"
+
+msgid "Nombre Fichero"
+msgstr "File Name"
+
+msgid "Volver"
+msgstr "Back"
+
+msgid "Confirmar Importacion"
+msgstr "Import Confirmation"
+
+msgid "Confirmar Ejecucion"
+msgstr "Execution Confirmation"
+
+msgid ""
+"Si continua se moveran los ficheros de Entorno de Simulacion a Entorno "
+"Productivo No Real. ¿Esta seguro de que desea continuar?"
+msgstr ""
+"The files will be copied from the Simulation Environment to the Non Real "
+"Production Environment. Are you sure you want to continue?"
+
+msgid "Cancelar"
+msgstr "Cancel"
+
+msgid "Aceptar"
+msgstr "Ok"
+
+msgid "Alerta Importacion Existente"
+msgstr "Import Exists Alert"
+
+msgid ""
+"Los ficheros a importar ya existen en el destino. ¿Esta seguro de que "
+"desea continuar?"
+msgstr ""
+"The importing files already exist in destiny. Are you sure you want to "
+"continue?"
+
+msgid "Listado de Parametros Disponible"
+msgstr "Available Parameters List"
+
+msgid "Tamaño"
+msgstr "Size"
+
+msgid "Ultima Actualizacion"
+msgstr "Last Update"
+
+msgid "Alerta Borrado Registro"
+msgstr "Deleting Record Alert"
+
+msgid "¿Esta seguro de que desea borrar el registro seleccionado?"
+msgstr "Are you sure you want to delete the selected record?"
+
+msgid "Borrar"
+msgstr "Delete"
+
+msgid "Detalle"
+msgstr "Detail"
+
+msgid "Promocionar"
+msgstr "Promote"
+
+msgid "Alta Ajuste Manual de Contrato"
+msgstr "Add Manual Contract Adjustments"
+
+msgid "Datos de la Ultima Ejecucion"
+msgstr "Latest Execution Data"
+
+msgid "Datos realizados por el motor"
+msgstr "Data done by the Engine"
+
+msgid "Importe Provision"
+msgstr "Provision Amount"
+
+msgid "Provision"
+msgstr "Provision"
+
+msgid "Datos finales que se aplicaran sobre la provision"
+msgstr "Final data applied on the provision"
+
+msgid "Ajuste Directo"
+msgstr "Direct Adjustment"
+
+msgid "Datos del Ajuste"
+msgstr "Adjustment Data"
+
+msgid "Importe"
+msgstr "Amount"
+
+msgid "Comentarios"
+msgstr "Comments"
+
+msgid "Limpiar"
+msgstr "Clear"
+
+msgid "Añadir"
+msgstr "Add"
+
+msgid "Alta Ajuste Manual de Cliente"
+msgstr "Add Manual Customer Adjustments"
+
+msgid "Realizados Motor"
+msgstr "Done by the Engine"
+
+msgid "Ajustados Directamente"
+msgstr "Directly Adjusted"
+
+msgid "de Importe"
+msgstr "Amount of"
+
+msgid "Selecciona reglas"
+msgstr "Select rules"
+
+msgid "Selecciona parametros"
+msgstr "Select parameters"
+
+msgid "Listado de Operaciones Disponible"
+msgstr "Available Operations List"
+
+msgid "Operaciones"
+msgstr "Operations"
+
+msgid "Listado de Reglas Disponible"
+msgstr "Available Rules List"
+
+msgid "Dato Impactado en Ajuste"
+msgstr "Data impacted in the Adjustment"
+
+msgid "Informacion del Contrato"
+msgstr "Contract Information"
+
+msgid "Centro"
+msgstr "Branch"
+
+msgid "Agrupacion"
+msgstr "Product Group"
+
+msgid "Contratos del Cliente"
+msgstr "Customer's Contracts"
+
+msgid "Aplicacion de Ajustes a Contrato"
+msgstr "Apply Adjustments by Contract"
+
+msgid "Tipo de Dato Ajustado"
+msgstr "Adjusted Data Type"
+
+msgid "Valor Ajustado"
+msgstr "Adjusted Value"
+
+msgid "Buscar Exclusiones"
+msgstr "Exclusions Search"
+
+msgid "Tipo de exclusion"
+msgstr "Exclusion type"
+
+msgid "Tipo de Exclusion"
+msgstr "Exclusion Type"
+
+msgid "Mis Exclusiones"
+msgstr "My Exclusions"
+
+msgid "Alta Exclusion Manual de Contrato"
+msgstr "Add Manual Contract Exclusion"
+
+msgid "Datos de la Exclusion"
+msgstr "Exclusion Data"
+
+msgid "Alta Exclusion Manual de Cliente"
+msgstr "Add Manual Customer Exclusion"
+
+msgid "Aplicacion de Exclusiones a Contrato"
+msgstr "Apply Exclusions by Contract"
+
+msgid "Fecha Ejecucion"
+msgstr "Execution Date"
+
+msgid "Empresa"
+msgstr "Company"
+
+msgid "Sucursal"
+msgstr "Branch"
+
+msgid "Agrup. Producto"
+msgstr "Product Group"
+
+msgid "Calculos Motor"
+msgstr "Engine Calculations"
+
+msgid "Calculos Ajustados"
+msgstr "Final Calculations"
+
+msgid "Importe Calc."
+msgstr "Calc. Amount"
+
+msgid "Importe % Calc."
+msgstr "Calc. % Amount"
+
+msgid "Stage Calc."
+msgstr "Calc. Stage"
+
+msgid "LGD Calc."
+msgstr "Calc. LGD"
+
+msgid "Importe Ajust."
+msgstr "Adjd. Amount"
+
+msgid "Importe % Ajust."
+msgstr "Adjd. % Amount"
+
+msgid "Stage Ajust."
+msgstr "Adjd. Stage"
+
+msgid "LGD Ajust."
+msgstr "Adjd. LGD"
+
+msgid "Informacion del Cliente"
+msgstr "Customer Information"
+
+msgid "Tipo"
+msgstr "Type"
+
+msgid "Nombre"
+msgstr "Name"
+
+msgid "Detalle Ajuste Cliente"
+msgstr "Customer Adjustment Detail"
+
+msgid "Fecha Alta"
+msgstr "Upload Date"
+
+msgid "Importe Ajustado"
+msgstr "Adjusted Amount"
+
+msgid "Stage Ajustado"
+msgstr "Adjusted Stage"
+
+msgid "Indicador de Ajuste"
+msgstr "Source"
+
+msgid "Detalle Ajuste Contrato"
+msgstr "Contract Adjustment Detail"
+
+msgid "Primer Titular"
+msgstr "First Owner"
+
+msgid "Producto"
+msgstr "Product"
+
+msgid "Agrupacion de Producto"
+msgstr "Product Group"
+
+msgid "Subproducto"
+msgstr "Subproduct"
+
+msgid "Detalle Ajuste Masivo LGD por Dto. de Flujos"
+msgstr "Massive LGD Adjustment Detail by Cash Flow Discount"
+
+msgid "Detalle Ajuste Masivo a Contrato"
+msgstr "Massive Contract Adjustment Detail"
+
+msgid "Detalle Ejecucion Cliente"
+msgstr "Customer Execution Detail"
+
+msgid "Estado FEVE"
+msgstr "FEVE Status"
+
+msgid "Fecha Estado FEVE"
+msgstr "FEVE Status Date"
+
+msgid "Nivel FEVE"
+msgstr "FEVE Level"
+
+msgid "Fecha Nivel FEVE"
+msgstr "FEVE Level Date"
+
+msgid "Calculos"
+msgstr "Calculations"
+
+msgid "Cartera IFRS9"
+msgstr "IFRS9 Portfolio"
+
+msgid "Imp. Prov. Calculado"
+msgstr "Calculated Prov. Amt."
+
+msgid "Importe Provisión Calculado"
+msgstr "Calculated Provision Amount"
+
+msgid "Imp. Prov. Ajustado"
+msgstr "Adjusted Prov. Amnt."
+
+msgid "Importe Provision Ajustado"
+msgstr "Adjusted Provision Amount"
+
+msgid "Stage Calculado"
+msgstr "Calculated Stage"
+
+msgid "LGD Ajustada"
+msgstr "Adjusted LGD"
+
+msgid "Detalle Ejecucion Contrato"
+msgstr "Contract Execution Detail"
+
+msgid "Saldo Contrato"
+msgstr "EAD"
+
+msgid "Modelo Scoring/Rating"
+msgstr "Scoring/Rating Model"
+
+msgid "Detalle Exclusion Cliente"
+msgstr "Customer Exclusion Detail"
+
+msgid "Detalle Exclusion Contrato"
+msgstr "Contract Exclusion Detail"
+
+msgid "Detalle Exclusion Cliente Masivo"
+msgstr "Massive Customer Exclusion Detail"
+
+msgid "Detalle Exclusion Masivo a Contrato"
+msgstr "Massive Contract Exclusion Detail"
+
+msgid "Aviso:"
+msgstr "Warning!"
+
+msgid "Este proyecto no admite parametrizacion"
+msgstr "This Project does not admit parametrization"
+
+msgid "¿Esta seguro de que desea encolar la ejecucion configurada?"
+msgstr "Are you sure you want to schedule the new execution?"
+
+msgid "Por favor, rellene todos los campos indicados"
+msgstr "The fields highlighted are mandatory"
+
+msgid "CORRECTO"
+msgstr "SUCCESS"
+
+msgid "La importacion se ha llevado a cabo correctamente"
+msgstr "The import was successful"
+
+msgid "La fecha de fin es menor que la fecha de inicio"
+msgstr "The end date is smaller than start date"
+
+msgid "Descripcion demasiado larga. El limite maximo son 250 caracteres"
+msgstr "The description exceeds the maximum length for this field (250 characters)"
+
+msgid "Correcto!"
+msgstr "Success!"
+
+msgid "Datos importados correctamente"
+msgstr "Data imported correctly"
+
+msgid "Cargando"
+msgstr "Loading"
+
+msgid "No se encontraron resultados"
+msgstr "No matching results found"
+
+msgid "Por favor, rellene todos los campos marcados."
+msgstr "Please, fill in all the required fields"
+
+msgid "Ejecucion añadida correctamente"
+msgstr "Execution added successfully"
+
+msgid "El numero maximo de ejecuciones planificadas es "
+msgstr "The maximum number of scheduled executions are "
+
+msgid ". No se pudo añadir la ultima ejecucion"
+msgstr ". The latest execution could not be added"
+
+msgid "Todas"
+msgstr "All"
+
+msgid "Planificada"
+msgstr "Planned"
+
+msgid "En ejecución"
+msgstr "In progress"
+
+msgid "Finalizada"
+msgstr "Finished"
+
+msgid "Finalizada con error"
+msgstr "Finished with errors"
+
+msgid "Análisis"
+msgstr "Analysis"
+
+msgid "Preproducción"
+msgstr "Preproduction"
+
+msgid "Contabilización real"
+msgstr "Production"
+
+msgid "cliente manual"
+msgstr "manual customer"
+
+msgid "cliente masivo"
+msgstr "massive customer"
+
+msgid "contrato manual"
+msgstr "manual contract"
+
+msgid "contrato masivo"
+msgstr "massive contract"
+
+msgid "Cliente manual"
+msgstr "Manual customer"
+
+msgid "Cliente masivo"
+msgstr "Massive customer"
+
+msgid "Contrato manual"
+msgstr "Manual contract"
+
+msgid "Contrato masivo"
+msgstr "Massive contract"
+
+msgid "Confirmar Alta de ajuste"
+msgstr "Adjustment Confirmation"
+
+msgid "¿Esta seguro de que desea insertar este ajuste?"
+msgstr "Are you sure you want to add this adjustment?"
+
+msgid "Confirmar Alta de exclusion"
+msgstr "Exclusion Confirmation"
+
+msgid "¿Esta seguro de que desea insertar esta exclusion?"
+msgstr "Are you sure you want to add this exclusion?"
+
+msgid "Ajuste a contrato añadido correctamente"
+msgstr "The Contract adjustment have been added successfully"
+
+msgid "Ajuste a cliente añadido correctamente"
+msgstr "The Customer adjustment have been added successfully"
+
+msgid "Exclusión a contrato añadida correctamente"
+msgstr "The Contract exclusion have been added successfully"
+
+msgid "Exclusión a cliente añadida correctamente"
+msgstr "The Customer exclusion have been added successfully"
+
+msgid "AVISO"
+msgstr "WARNING"
+
+msgid "Todos"
+msgstr "All"
+
+msgid "LGD"
+msgstr "% LGD"
+
+msgid "Stage"
+msgstr ""
+
+msgid "Traspasar"
+msgstr "Transfer"
+
+msgid "Por favor, rellene el campo marcado"
+msgstr "The fields highlighted are mandatory"
+
+msgid "Por favor, rellene uno de los dos campos"
+msgstr "Please fill in one of the two fields"
+
+msgid "PRODUCCIÓN"
+msgstr "PRODUCTION"
+
+msgid "Produccion"
+msgstr "Production"
+
+msgid "Producción"
+msgstr "Production"
+
+msgid "Id de cliente no encontrado"
+msgstr "The Customer ID does not exist"
+
+msgid "Id de contrato no encontrado"
+msgstr "The Contract ID does not exist"
+
+msgid "Promocion de Ajustes"
+msgstr "Adjustments Promotion"
+
+msgid "Promocion de Exclusiones"
+msgstr "Exclusions Promotion"
+
+msgid "Promocionar a"
+msgstr "Promote to"
+
+msgid "Promocionar Exclusión a"
+msgstr "Promote exclusion to"
+
+msgid "Traspaso de Ajustes"
+msgstr "Adjustments Transfer"
+
+msgid "Traspaso de Exclusiones"
+msgstr "Exclusions Transfer"
+
+msgid "Traspasar ajuste a"
+msgstr "Transfer adjustment to"
+
+msgid "Traspasar Exclusión a"
+msgstr "Transfer exclusion to"
+
+msgid "Elige una opcion"
+msgstr "Choose an option"
+
+msgid "No disponible"
+msgstr "Not available"
+
+msgid "Contabilización Real"
+msgstr "Production"
+
+msgid "No se puede promocionar mas de una vez"
+msgstr "Can't promote more than once"
+
+msgid "La fecha de fin debe ser mayor a hoy"
+msgstr "End date must be greater than today"
+
+msgid "El ajuste no es promocionable"
+msgstr "Adjustment is not promotable"
+
+msgid "La exclusion no es promocionable"
+msgstr "Exclusion is not promotable"
+
+msgid "No se puede copiar porque ya existe en la finalidad destino"
+msgstr ""
+"It could not be copied because in the destination purpose it already "
+"exists"
+
+msgid "Las fechas de Inicio y Fin están limitadas al rango de búsqueda del filtro"
+msgstr "The Start date and End date are limited to the filter search range"
+
+msgid "Datos ultima ejecucion"
+msgstr "Latest execution data"
+
+msgid "Pre-produccion"
+msgstr "Pre-Production"
+
+msgid "Detalle ultima ejecucion"
+msgstr "Detail of the last execution"
+
+msgid "Fecha ultima ejecucion"
+msgstr "Date of the last execution"
+
+msgid "Datos obtenidos por el motor"
+msgstr "Data done by the engine"
+
+msgid "La ruta especificada no contiene ficheros"
+msgstr "The specified path does not have files"
+
+msgid "Indicador del Ajuste"
+msgstr "Source"
+
+msgid "No Ajustado"
+msgstr "Not Adjusted"
+
+msgid "Directo"
+msgstr "Direct"
+
+msgid "Indirecto"
+msgstr "Indirect"
+
+msgid "Usuario no existe"
+msgstr "The user does not exist"
+
+msgid "ID Cliente no existe"
+msgstr "The customer ID does not exist"
+
+msgid "ID Contrato no existe"
+msgstr "The contract ID does not exist"
+
+msgid "Cliente no encontrado"
+msgstr "Customer not found"
+
+msgid "Conexión HBase caída"
+msgstr "HBase connection down"
+
+msgid "Error al importar reglas"
+msgstr "Error importing rules"
+
+msgid ""
+"No se ha podido conectar con el servidor FTP. Por favor, revisa tu "
+"configuración"
+msgstr "Could not connect to FTP server. Please, review your configuration"
+
+msgid "No existen ficheros en la ruta definida"
+msgstr "There are no files in the specified route"
+
+msgid "Maximo de ejecuciones planeadas alcanzado"
+msgstr "Maximum number of planned executions reached"
+
+msgid "Contrato no encontrado"
+msgstr "Contract not found"
+
+msgid "Error al insertar ajuste por contrato"
+msgstr "Error inserting adjustment by contract"
+
+msgid "Error al insertar ajuste por cliente"
+msgstr "Error inserting adjustment by customer"
+
+msgid "Error al insertar exclusión por contrato"
+msgstr "Error inserting exclusion by contract"
+
+msgid "Error al insertar exclusión por cliente"
+msgstr "Error inserting exclusion by customer"
+
+msgid "Contratos no encontrados para este identificador de cliente"
+msgstr "Contracts not found for this customer identifier"
+
+msgid "No se pudo obtener la información"
+msgstr "Information could not be obtained"
+
+msgid "No se han encontrado datos de cliente"
+msgstr "Client data not found"
+
+msgid "Fecha Importacion"
+msgstr "Import Date"
+
+msgid "Finalizada con error de reglas/params"
+msgstr "Finished with rules/param error"
+
+msgid "Finalizada con error de Modellica"
+msgstr "Finished with Modellica error"
+
+msgid ""
+"El número de entidades en el sistema es mayor que 1. La asignación se "
+"debe realizar manualmente. Contacte con su administrador"
+msgstr ""
+"The number of Entities in the system is greater than 1. Assignment must "
+"be done manually. Contact with your administrator"
+
+msgid "Se le ha asignado al usuario"
+msgstr "Assigned to the user "
+
+msgid "con ID"
+msgstr "with ID: "
+
+msgid "la entidad"
+msgstr "the entity "
+
+msgid "Asignacion de parametros"
+msgstr "Parameter assignment"
+
+msgid "Indicador de origen"
+msgstr "Origin Indicator"
+
+msgid "EAD"
+msgstr ""
+
+msgid "Exclusion"
+msgstr ""
+
+msgid "Datos Ajustados"
+msgstr "Adjusted Data"
+

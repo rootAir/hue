@@ -1,0 +1,21 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+	</head>
+	<body>
+	<div class="ifrs9">
+		<div id="ifrs9_modalExiste" class="modal modalWidth">
+			<div class="modal-content">
+				<h4>{{_('Alerta Importacion Existente')}}</h4>
+				<p class="modal-body">{{_('Los ficheros a importar ya existen en el destino. ¿Esta seguro de que desea continuar?')}}</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" id="ifrs9_buttonCancelarExiste" class="modal-action modal-close waves-effect waves-green btn-flat ">{{_('Cancelar')}}</a>
+				<a href="#!" id="ifrs9_buttonAceptarExiste"  class="modal-action modal-close waves-effect waves-green btn-flat ">{{_('Aceptar')}}</a>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

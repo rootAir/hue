@@ -1,0 +1,199 @@
+{% load babel %}
+<div class="pagina ifrs9">
+    <form id="import_rules_params_analisis" action="importar_reglas/" type="post" name="import_rules_params_analisis">
+        {% csrf_token %}
+        {{form.environment}}
+        <div class="align-left">
+            <h4 id="ifrs9_pageTitle">
+                <span style="display:none" id="env1">
+                    {{_('Analisis')}}
+                    -
+                    {{ _('Importar Reglas y Parametros')}}
+                </span>
+                <span style="display:none" id="env2">
+                    {{_('Pre-Produccion')}}
+                    -
+                    {{ _('Importar Reglas y Parametros')}}
+                </span>
+                <span style="display:none" id="env3">
+                    {{_('Contabilizacion Real')}}
+                    -
+                    {{ _('Importar Reglas y Parametros')}}
+                </span>
+            </h4>
+        </div>
+        <div class="loadingDivNoAjax  center-loading">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 10em;"></i>
+            <span class="sr-only">{{_('Cargando')}}...</span>
+        </div>
+        <ul class="collapsible ifrs9_hidden" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header active" id="ifrs9_cabFiltro">
+                    <span class="cabFiltroLineOn">
+                        <i class="fa fa-files-o headerIcon"></i>
+                    </span>
+                    <h4 class="headerContenedor cabFiltroLineOn">{{_('Reglas')}}</h4>
+                </div>
+                <div class="collapsible-body">
+                    <div id="ifrs9_collapseFiltrosBuscarAjustes" class="panel-body collapse in">
+                        {% for elem in projects %}
+                            <div class="checkelement_imports">
+                                <input type="hidden" value="{{elem.id_project}}" class="project_id_rules" name="project_id_rules_{{elem.tipoproyecto.id}}"/>
+                                <input type="hidden" value="{{elem.entidad.entidad_id}}" class="entidad_id_rules" name="entidad_id_rules_{{elem.tipoproyecto.id}}"/>
+                                <input type="hidden" value="{{elem.tipoproyecto.id}}" class="tipoProyecto_id_rules" name="tipoproyecto_id_rules_{{elem.tipoproyecto.id}}"/>
+
+                                <div class="input-field">
+                                    <div class="col-lg-6 col-md-6  col-xs-6  col-sm-6">
+                                        <label class="left15">{{_('Proyecto')}}:
+                                            {%if elem.tipoproyecto.descripcion == 'Asignación de parámetros' %}
+                                            {{_('Asignacion de parametros')}}
+                                            {%elif elem.tipoproyecto.descripcion == 'Cálculo de provisiones' %}
+                                            {{_('Cálculo de provisiones')}}
+                                            {% else %}
+                                            {{elem.tipoproyecto.descripcion}}
+                                            {%endif%}
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                                        <div>
+                                            <!-- {{form.rules_file_param}} -->
+                                            <input type="checkbox" class="filled-in active form-field form-field-rules" name="rules_check_{{elem.tipoproyecto.id}}" id="ifrs9_fileAsigReglas_{{elem.tipoproyecto.id}}" onclick="handleCheckboxImport(this)"/>
+                                            <label class="margin-bottom25" for="ifrs9_fileAsigReglas_{{elem.tipoproyecto.id}}">{{_('Fichero de reglas')}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkelement_imports">
+                                <div class="col-lg-12 col-md-12  col-xs-12  col-sm-12">
+                                    <div class="input-field" id="ifrs9_comentariosBloque">
+                                        <!-- {{form.rules_desc_param}} -->
+                                        <textarea
+                                            class="materialize-textarea form-field-desc"
+                                            cols="40"
+                                            id="ifrs9_comentariosAsigReglas_{{elem.tipoproyecto.id}}"
+                                            length="250"
+                                            name="rules_desc_{{elem.tipoproyecto.id}}"
+                                            rows="10"
+                                            disabled
+                                            onpaste="checkDescLength('ifrs9_comentariosAsigReglas_',{{elem.tipoproyecto.id}})"
+                                            onblur="checkDescLength('ifrs9_comentariosAsigReglas_',{{elem.tipoproyecto.id}})"></textarea>
+                                        <label>{{_('Descripcion')}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor%}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="collapsible ifrs9_hidden" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header active" id="ifrs9_cabFiltro">
+                        <span class="cabFiltroLineOn">
+                            <i class="fa fa-files-o headerIcon"></i>
+                        </span>
+                        <h4 class="headerContenedor cabFiltroLineOn">{{_('Parametros')}}</h4>
+                    </div>
+                    <div class="collapsible-body">
+                        <div id="ifrs9_collapseFiltrosBuscarAjustes" class="panel-body collapse in">
+                            {% for elem in projects %}
+                                {%if elem.indparametros == True %}
+                                    <div class="checkelement_imports">
+                                        <input type="hidden" value="{{elem.tipoproyecto.id}}" class="project_id_params" name="project_id_params_{{elem.tipoproyecto.id}}"/>
+                                        <input type="hidden" value="{{elem.entidad.entidad_id}}" class="entidad_id_params" name="entidad_id_params_{{elem.tipoproyecto.id}}"/>
+                                        <input type="hidden" value="{{elem.tipoproyecto.id}}" class="tipoProyecto_id_rules" name="tipoproyecto_id_params_{{elem.tipoproyecto.id}}"/>
+
+                                        <div class="input-field">
+                                            <div class="col-lg-6 col-md-6  col-xs-6  col-sm-6">
+                                                <label class="left15">{{_('Proyecto')}}:
+                                                  {%if elem.tipoproyecto.descripcion == 'Asignación de parámetros' %}
+                                                  {{_('Asignacion de parametros')}}
+                                                  {%elif elem.tipoproyecto.descripcion == 'Cálculo de provisiones' %}
+                                                  {{_('Cálculo de provisiones')}}
+                                                  {% else %}
+                                                  {{elem.tipoproyecto.descripcion}}
+                                                  {%endif%}
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                                                    <div class="file-field input-field">
+                                                        <div class="btn iconExaminar">
+                                                            {%if elem.indparametros == True %}
+                                                                <span>
+                                                                    <i class="fa fa-folder-open ifrs9_fileProvParam form-field" id="ifrs9_aux_id_{{elem.tipoproyecto.id}}"></i>
+                                                                </span>
+                                                                {% endif%}
+                                                            </div>
+                                                            <div class="file-path-wrapper">
+                                                                <input id="ifrs9_fileProvParam_{{elem.tipoproyecto.id}}" class="form-field fix-input-params-width form-field-params" name="param_select_file_{{elem.tipoproyecto.id}}" type="text" disabled required/>
+                                                                <span class="fa fa-times remove-params-file" onclick="empty_params_field({{elem.tipoproyecto.id}});"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="checkelement_imports">
+                                                <div class="col-lg-12 col-md-12  col-xs-12  col-sm-12">
+                                                    <div class="input-field" id="ifrs9_comentariosBloque">
+                                                        {%if elem.indparametros == True %}
+                                                            <textarea
+                                                                class="materialize-textarea form-field-desc"
+                                                                cols="40"
+                                                                name="desc_param_{{elem.tipoproyecto.id}}"
+                                                                id="ifrs9_comentariosProvParam_{{elem.tipoproyecto.id}}"
+                                                                length="250"
+                                                                name="prov_desc_{{elem.tipoproyecto.id}}"
+                                                                rows="10"
+                                                                required
+                                                                disabled
+                                                                onblur="checkDescLength('ifrs9_comentariosProvParam_',{{elem.tipoproyecto.id}})"
+                                                                onpaste="checkDescLength('ifrs9_comentariosProvParam_',{{elem.tipoproyecto.id}})"></textarea>
+                                                            <label for="ifrs9_comentariosProvParam_{{elem.tipoproyecto.id}}">{{_('Descripcion')}}</label>
+                                                            {% endif%}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif%}
+
+                                                {% endfor%}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- Modal Structure -->
+                            </form>
+                            <div id="ifrs9_myModalConfirmacion"></div>
+                            <div id="ifrs9_myModalExiste"></div>
+                            <div id="ifrs9_myModalParamsSubida"></div>
+                            <div id="ifrs9_myModalCalculoProvisionesSubida"></div>
+
+                            <div class="col-xs-12 col-sm-12 padding-right0">
+                                <div class="col-xs-12 col-sm-11 text-right">
+                                    <div class="alert alert-warning text-center control-class" id="panel-error">
+                                        <strong>{{_('Aviso:')}}</strong>
+                                        {{_('Por favor, rellene todos los campos indicados')}}
+                                    </div>
+                                    <div class="alert alert-warning control-class text-center length_desc_check" id="panel-error">
+                                        <strong>{{_('Aviso:')}}</strong>
+                                        {{_('Descripcion demasiado larga. El limite maximo son 250 caracteres')}}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-1 padding-right0 text-right">
+                                    <span class="boton-botonera-inferior">
+                                        <button class="button-detalle-alta button-disabled ifrs9_hidden" id="ifrs9_btnImportar" disabled>{{_('Importar')}}</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <input type="hidden" name="hiddenlan" id="hiddenlan" value="{{lan}}">
+                        </div>
+                        <div class="success_message">
+                            <div class="alert alert-success  text-center" id="panel-success">
+                                <strong>{{_('CORRECTO')}}</strong><br/>
+                                {{_('La importacion se ha llevado a cabo correctamente')}}
+                            </div>
+                        </div>
+                        <div class="error_message">
+                            <div class="alert alert-error  text-center" id="panel_error_server">
+                                <strong>{{_('Error')}}</strong><br/>
+                                {{_('La ruta especificada no contiene ficheros')}}
+                            </div>
+                        </div>

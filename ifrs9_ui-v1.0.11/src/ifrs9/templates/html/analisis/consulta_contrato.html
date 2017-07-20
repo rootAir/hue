@@ -1,0 +1,197 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+</head>
+
+<body>
+    <input type="hidden" value="{{NaN_msg}}" id="hiddenNan" >
+    <div class="pagina ifrs9">
+        <div class="align-left">
+            <h4 id="ifrs9_pageTitle">
+					<span style="display:none" id="env1">
+							{{_('Analisis')}}
+							-
+							{{ _('Consulta por Contrato')}}
+					</span>
+					<span style="display:none" id="env2">
+							{{_('Pre-Produccion')}}
+							-
+							{{ _('Consulta por Contrato')}}
+					</span>
+					<span style="display:none" id="env3">
+							{{_('Contabilizacion Real')}}
+							-
+							{{ _('Consulta por Contrato')}}
+					</span>
+				</h4>
+        </div>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header active" id="ifrs9_cabFiltro">
+                    <span class="cabFiltroLineOn">
+							<i class="fa fa-filter headerIcon"></i>
+						</span>
+                    <h4 class="headerContenedor cabFiltroLineOn">{{_('Filtro')}}</h4>
+                </div>
+                <div class="collapsible-body fixed_Filter_overflow">
+                    <div id="ifrs9_collapseFiltrosBuscarAjustes" class="panel-body collapse in">
+                        <form id="form_consulta_contrato" name="form_consulta_contrato" type="post" action="">
+                            {{form_filter.environment}} {%csrf_token%}
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 padding-left0 padding-top10">
+                                <div class="input-field">
+                                    <div class="col-lg-2 col-md-5 col-xs-5 col-sm-5">
+                                        <div class="input-field">
+                                            <!-- <input id="ifrs9_idContrato"  class="search-table validate" type="text"></input> -->
+                                            {{form_filter.id_contrato}}
+                                            <label for="ifrs9_idContrato">{{_('ID Contrato')}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <hr class="hr_filters" />
+                        <div class="row">
+                            <div class="col-xs-12 col_sm-10">
+                                <div class="alert alert-warning text-center control-class" id="search-no-contract">
+                                    <strong>{{_('Aviso:')}}</strong>
+                                    <span>{{_('Id de contrato no encontrado')}}</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col_sm-2">
+                                <button class="col-lg-offset-11 button-detalle-alta boton-derecha button-disabled" id="ifrs9_btnBuscar" disabled="">{{_('Buscar')}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="loadingDiv ifrs9_hidden center-loading">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">{{_('Cargando')}}...</span>
+        </div>
+        <ul class="collapsible filaOculta" data-collapsible="accordion" id="ifrs9_detalleContrato">
+            <li>
+                <div class="panel panel-default padding-bottom5">
+                    <div id="ifrs9_collapseFiltrosBuscarAjustes" class="panel-body collapse in">
+                        <form class="form-inline form-clientes">
+                            <h4 class="headerContenedor headerDetail">{{_('Informacion del Contrato')}}</h4>
+                            <div class="fieldset-alta">
+                              <div class="lineDetail">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="col-xs-4 col-sm-4 ">
+                                        <span><b>{{_('ID Contrato')}}:</b></span>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-8">
+                                        <span class="id_contrato"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="col-xs-4 col-sm-4 ">
+                                        <span><b>{{_('Primer Titular')}}:</b></span>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-8">
+                                        <span class="primer_titular"></span>
+                                    </div>
+                                </div>
+                              </div>
+                                <div class="lineDetail">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <!-- <div class="col-xs-4 col-sm-4 ">
+                                            <span><b>{{_('Entidad')}}:</b></span>
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8">
+                                            <span class="entidad"></span>
+                                        </div> -->
+                                        <div class="col-xs-4 col-sm-4 ">
+                                            <span><b>{{_('Centro')}}:</b></span>
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8">
+                                            <span class="centro"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                      <div class="col-xs-4 col-sm-4 ">
+                                          <span><b>{{_('Agrup. Producto')}}:</b></span>
+                                      </div>
+                                      <div class="col-xs-8 col-sm-8">
+                                          <span class="agrup_producto"></span>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="lineDetail">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="collapsible filaOculta" data-collapsible="accordion" id="ifrs9_contentTableResultados">
+            <li>
+                <div class="panel panel-default">
+                    <div class="collapsible-header active">
+                        <span class="cabFiltroLineOn">
+													<i class="fa fa-list headerIcon"></i>
+												</span>
+                        <h4 class="headerContenedor cabFiltroLineOn">{{_('Resultados')}}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="accordion-group ifrs9_accordion_fix">
+                            <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+                                    <section id="ifrs9_my-customers" class="section main-section">
+                                        <div>
+                                            <table id="ifrs9_contracts-table" class="display nowrap table-header-dark ifrs9_hidden" data-locale="{{lan}}">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th data-field="fechaExec" data-sort-name="_fechaExec_data" data-sortable="true" sort-order="desc" data-sorter="myCustomSortTable">{{_('Fecha Ejecucion')}}</th>
+                                                        <th>{{_('Realizados Motor')}}</th>
+                                                        <th>{{_('Datos Finales')}}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                            <div class="lineDetail"></div>
+                                            <div class="lineDetail filaOculta" id="ifrs9_indicador_leyenda">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <div class="col-xs-2 col-sm-2">
+                                                        <span>{{_('Indicador del Ajuste')}}:</span>
+                                                    </div>
+                                                    <div class="col-xs-2 col-sm-2">
+                                                        <span>({{_('NA')}}):</span>
+                                                        <span>{{_('No Ajustado')}}</span>
+                                                    </div>
+                                                    <div class="col-xs-2 col-sm-2">
+                                                        <span>({{_('D')}}):</span>
+                                                        <span>{{_('Directo')}}</span>
+                                                    </div>
+                                                    <div class="col-xs-2 col-sm-2">
+                                                        <span>({{_('I')}}):</span>
+                                                        <span>{{_('Indirecto')}}</span>
+                                                    </div>
+                                                    <div class="col-xs-2 col-sm-2">
+                                                          <span>({{_('E')}}):</span>
+                                                          <span>{{_('Exclusion')}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

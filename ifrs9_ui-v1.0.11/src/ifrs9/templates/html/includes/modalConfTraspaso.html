@@ -1,0 +1,57 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+		<script type="text/javascript" src="/static/ifrs9/js/ifrs9.js"></script>
+		<script type="text/javascript">
+			function manage_button(elem) {
+				console.log($(elem).val())
+				if($(elem).val()==='0'){
+	        $('#ifrs9_buttonAceptarConfirmacionTraspaso').addClass('button-disabled').prop('disabled', true)
+	      } else {
+	        $('#ifrs9_buttonAceptarConfirmacionTraspaso').removeClass('button-disabled').prop('disabled', false)
+	      }
+			}
+		</script>
+	</head>
+	<body>
+	<div class="ifrs9">
+		<div id="ifrs9_modalConfirmacion" class="modal modalWidth">
+			<div class="modal-content">
+				<h4>{{_('Traspaso de Ajustes')}}</h4>
+				{% if finalidad == "2" %}
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						{{_('Traspasar ajuste a')}}: {{_('Analisis')}}
+						<input type="hidden" value="1" id="traspasar_ajuste_destination" />
+					</div>
+				</div>
+				{% endif %}
+				{% if finalidad == "3" %}
+				<div class="row">
+						<div class="input-field col-sm-6 col-sm-offset-3">
+							<p class="modal-body">{{_('Traspasar ajuste a')}}:</p>
+							<select id="traspasar_ajuste_destination" onchange="manage_button(this)">
+								<option value="0" disabled selected>{{_('Elige una opcion')}}</option>
+								<option value="1">{{_('Analisis')}}</option>
+								<option value="2">{{_('Preproducción')}}</option>
+							</select>
+						</div>
+				</div>
+				{% endif %}
+			</div>
+
+			<div class="modal-footer">
+				<a href="#!" id="ifrs9_buttonCancelarConfirmacion" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat ">{{_('Cancelar')}}</a>
+				{% if finalidad == "2" %}
+				<button id="ifrs9_buttonAceptarConfirmacionTraspaso" onclick="aceptar_traspasar_ajuste()" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat">{{_('Aceptar')}}</button>
+				{% endif %}
+				{% if finalidad == "3" %}
+				<button id="ifrs9_buttonAceptarConfirmacionTraspaso" onclick="aceptar_traspasar_ajuste()" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat button-disabled" disabled>{{_('Aceptar')}}</button>
+				{% endif %}
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

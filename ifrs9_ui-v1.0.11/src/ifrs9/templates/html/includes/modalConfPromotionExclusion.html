@@ -1,0 +1,42 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="/static/ifrs9/resources/js/tabla.js"></script>
+    <script type="text/javascript" src="/static/ifrs9/js/ifrs9.js"></script>
+
+</head>
+
+<body>
+    <div class="ifrs9">
+        <div id="ifrs9_modalConfirmacion" class="modal modalWidth">
+            <div class="modal-content">
+                <h4>{{_('Promocion de Exclusiones')}}</h4>
+                <input type="hidden" value="" id="id_exclusion_promocion" />
+                <!-- Promocion de ajustes -->
+
+                {% if finalidad == "2" %}
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        {{_('Promocionar Exclusión a')}}: {{_('Pre-produccion')}}
+                    </div>
+                </div>
+                {% endif %}
+								{% if finalidad == "3" %}
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        {{_('Promocionar Exclusión a')}}: {{_('Produccion')}}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="ifrs9_buttonCancelarConfirmacion" class="modal-action modal-close button-detalle-alta waves-effect waves-green btn-flat ">{{_('Cancelar')}}</a>
+                <a href="javascript:void(0)" id="ifrs9_buttonAceptarConfirmacion" onclick="aceptar_promocionar_exclusion()" class="modal-action button-detalle-alta waves-effect waves-green btn-flat">{{_('Aceptar')}}</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

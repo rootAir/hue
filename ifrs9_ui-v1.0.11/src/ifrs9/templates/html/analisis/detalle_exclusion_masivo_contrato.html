@@ -1,0 +1,186 @@
+{% load babel %}
+<div class="pagina ifrs9">
+    <div class="align-left">
+        <h4 id="ifrs9_pageTitle">
+			{% if finalidad_actual == '1' %}
+				<span id="env1">
+						{{_('Analisis')}}
+						-
+						{{ _('Detalle Exclusion Masivo a Contrato')}}
+				</span>
+			{% elif finalidad_actual == '2' %}
+				<span id="env2">
+						{{_('Pre-Produccion')}}
+						-
+						{{ _('Detalle Exclusion Masivo a Contrato')}}
+				</span>
+				{% elif finalidad_actual == '3' %}
+				<span id="env3">
+						{{_('Producción')}}
+						-
+						{{ _('Detalle Exclusion Masivo a Contrato')}}
+				</span>
+				{% endif %}
+		</h4>
+    </div>
+    <ul class="collapsible" data-collapsible="accordion" id="ifrs9_contentTableResultados">
+        <li>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="accordion-group">
+                        <div id="ifrs9_collapseResultados" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <h4 class="headerContenedor headerDetail">{{_('Contrato')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('ID Contrato')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.contract_id.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Primer Titular')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.customer_name.value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Entidad')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.entity.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Centro')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.branch.value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Producto')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.product.value}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Subproducto')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.subproduct.value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span title="{{_('Agrupacion de Producto')}}"><b>{{_('Agrup. Producto')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{detalle.product_grouper.value}}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6"> </div>
+                                    </div>
+                                </div>
+                                <h4 class="headerContenedor headerDetail">{{_('Exclusiones')}}</h4>
+                                <div class="fieldset-alta">
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Usuario Alta')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{exclusion.usuarioalta}}
+                                                  {%if exclusion.usuarioalta.first_name and exclusion.usuarioalta.last_name %} ({{exclusion.usuarioalta.first_name}},{{exclusion.usuarioalta.last_name}})
+                                                  {%elif exclusion.usuarioalta.first_name %} ({{exclusion.usuarioalta.first_name}})
+                                                  {%endif%}</span>{%if exclusion.usuarioalta.first_name and exclusion.usuarioalta.last_name %} ({{exclusion.usuarioalta.first_name}},
+                                                    {{exclusion.usuarioalta.last_name}}){%endif%}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Alta')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{exclusion.fechaalta | date:"d-m-Y"}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Finalidad')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                {%if exclusion.finalidad.descripcion == 'Análisis' %}
+                                                <span>{{_('Analisis')}}</span> {%endif%} {%if exclusion.finalidad.descripcion == 'Preproducción' %}
+                                                <span>{{_('Pre-Produccion')}}</span> {%endif%} {%if exclusion.finalidad.descripcion == 'Producción' %}
+                                                <span>{{_('Produccion')}}</span> {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Inicio')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{exclusion.fechaini | date:"d-m-Y"}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="col-xs-4 col-sm-4 ">
+                                                <span><b>{{_('Fecha Fin')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8">
+                                                <span>{{exclusion.fechafin | date:"d-m-Y"}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lineDetail">
+                                        <div class="col-xs-12 col-sm-12 margin-bottom15">
+                                            <div class="col-xs-4 col-sm-2">
+                                                <span><b>{{_('Comentarios')}}:</b></span>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-10" style="margin-left:-5px">
+                                                <span>{{exclusion.comentario}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 text-right padding-right0">
+                <div class="col-xs-12 col-sm-6"></div>
+                <div class="col-xs-12 col-sm-6 padding-right0">
+                    <span class="boton-botonera-inferior">
+						<button class="button-detalle-alta" onclick="cerrarExclusionDetalle();" id="ifrs9_volver">{{_('Volver')}}</button>
+					</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

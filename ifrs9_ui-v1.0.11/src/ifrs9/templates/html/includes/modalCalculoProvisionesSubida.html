@@ -1,0 +1,37 @@
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	</head>
+	<body>
+		<!-- Modal CALCULO PROVISIONES -->
+		<div id="ifrs9_modalCalculoProvisionesSubida" class="modal modalWidth">
+			<div class="modal-content">
+				<div class="collapsible-header active">
+					<span class="cabFiltroLineOn">
+					<i class="fa fa-files-o headerIcon"></i>
+					</span>
+					<h4 class="headerContenedor cabFiltroLineOn">{{_('Listado de Parametros Disponible')}}</h4>
+					<button id="ifrs9_btnSeleccionarParam" type="button" style="float:right" class="button-detalle-alta float-right">{{_('Seleccionar')}}</button>
+				</div>
+				<section id="ifrs9_my-listado-param" class="section main-section">
+					<div>
+						<table id="ifrs9_listado-prov-table_subida" class="table-header-dark" data-locale="{{lan}}">
+							<thead>
+								<tr>
+									<th data-sortable="true">{{_('Nombre Fichero')}}</th>
+									<th data-sortable="true">{{_('Tamaño')}}</th>
+									<th data-sortable="true">{{_('Ultima Actualizacion')}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>
