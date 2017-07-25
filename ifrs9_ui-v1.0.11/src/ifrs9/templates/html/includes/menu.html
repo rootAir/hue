@@ -5,9 +5,6 @@
         <div class="searchMenu_cont" id="ifrs9_searchAccordion">
             <div class="panel pne-filter">
                 <div class="pne-panel panel-heading panel-title">
-                    <span>{{_('Cadastro Produto')}}</span>
-                </div>
-                <div class="pne-panel panel-heading panel-title">
                     <span>{{_('ANALISIS')}}</span>
                 </div>
                 <div class="pne-panel panel-heading panel-title pne-header inner-menu-header">
@@ -40,6 +37,11 @@
                 <div class="pne-panel panel-heading panel-title">
                     <span><i class="fa fa-plus"></i></span>
                     <a href="#" id="ifrs9_alta_ajustes_cliente_analisis">{{_('Alta por Cliente')}}</a>
+                </div>
+                {% endif %} {% if ctxperm.anw %}
+                <div class="pne-panel panel-heading panel-title">
+                    <span><i class="fa fa-plus"></i></span>
+                    <a href="#" id="ifrs9_alta_ajustes_cliente_analisis">{{_('Add by Product')}}</a>
                 </div>
                 {% endif %}
                 <div class="pne-panel panel-heading panel-title">

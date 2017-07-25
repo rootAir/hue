@@ -69,6 +69,7 @@ def get_user_entity_id(id_user):
 
 def get_user_currency(id_user):
     # get user currency from the user id
+    import ipdb; ipdb.set_trace()
     entidadusuario = EntidadUsuario.objects.select_related(
         'entidad__entidad_id').get(usuario_id=id_user)
     return entidadusuario.entidad.moneda

@@ -1,0 +1,23 @@
+
+Os seguintes códigos desenvolvidos estão na pasta do MZ: \\mscluster11fs\ifrs_agile\Scripts\ODS\MZ
+
+Caso necessária uma nova execução, os arquivos devem ser executados na ordem apresentada.
+
+1.	Geração da tabela final e da tabela TEMP para composição dos Dígitos: MZ_SIT_GEST.hql
+
+2.	Geração do valor do Dígito “01” da variável para o Público “01”: MZ_SIT_GEST_PUBLIC_1.hql
+
+3.	Geração do valor do Dígito “01” da variável para o Público “02”: MZ_SIT_GEST_PUBLIC_2.hql
+
+4.	Geração dos valores dos Dígitos “02, 03, 04 e 05” da variável para ambos os públicos: MZ_DIGIT_2345.hql
+
+Todos os arquivos possuem comentários internos, e as regras funcionais utilizadas para estes se encontram no arquivo em anexo.
+
+
+
+Hue - Cloudera : srvbdrpvlbr04.santanderbr.corp:8888  (acesso com user/paswd da rede)
+
+/*para conectar no Hive*/
+beeline -u "jdbc:hive2://srvbdrprlbr11:10000/default;principal=hive/_HOST@COMPANY.COM" --hiveconf hive.execution.engine=spark --hivevar DT_REFE='20170531'
+
+

@@ -135,6 +135,7 @@ def jobs(request):
   time_value = request.POST.get('time_value', 7)
   time_unit = request.POST.get('time_unit', 'days')
 
+  
   if request.POST.get('format') == 'json':
     try:
       # Limit number of jobs to be 1000
