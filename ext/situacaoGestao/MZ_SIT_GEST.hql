@@ -49,7 +49,7 @@ SELECT CTNR.PENUMPER,
        ,MZ02.COD_SUBPRODU
        ,MZ02.NUM_CUENTA
        ,MZ02.NUM_SECUENCIA_CTO
-       ,CTNR.PESUBSEG SUB_SEG                                                          -- SUB_SEGMENTO PESSOA
+       ,PESS.PESUBSEG SUB_SEG                                                          -- SUB_SEGMENTO PESSOA
        ,MZ02.COD_PRODUCTO COD_PROD                                                     -- CÓDIGO PRODUTO PESSOA
        ,MZ02.QT_ARS_PRC_MZ13 DIAS_ATRS                                                 -- DIAS EM ATRASO
        ,((MZ02.VL_ORI_OPR_MZ13 - MZ02.SLD_DVR_OPR_MZ13) + MZ02.SLD_DVR_OPR_MZ13) LIMIT --LIMITES "VL-ORI-OPR-MZ13 - SLD-DVR-OPR-MZ13" + SALDO DEVEDOR"SLD-DVR-OPR-MZ13"
@@ -76,18 +76,26 @@ FROM
 INNER JOIN
      (
       SELECT PENUMPER
-             ,PESUBSEG
+             ,PER_PE0_0001_M.PESUBSEG
              ,DT_REFE
       FROM
            CD_IFRS9.PER_PE0_0001_M
       WHERE
            DT_REFE = '20170531'
-     ) CTNR ON
-     (
-       CTNR.DT_REFE = MZ02.DT_REFE
+           -- penumcon = OPERACAO
+     ) PESS 
+     INNER JOIN CD_IFRS9.PER_PE0_0006_M CTNR ON
+     (  
+          PESS.PENUMPER              = CTNR.PENUMPER 
+          AND MZ02.COD_ENTIDAD       = CTNR.PECDGENT
+          AND MZ02.COD_CENTRO        = CTNR.PECODOFI
+          AND MZ02.COD_PRODUCTO      = CTNR.PECODPRO
+          AND MZ02.COD_SUBPRODU      = CTNR.PECODSUB
+          AND MZ02.NUM_CUENTA        = CTNR.PENUMCON
+          AND MZ02.DT_REFE           = '20170531'
      )
 WHERE
-     MZ02.DT_REFE = '20170531'
+     MZ02.DT_REFE = '20170531' limit 5
 ;
 
 
