@@ -42,15 +42,15 @@ LOCATION '/sistemas/ifr/ods/staging/MZ_SIT_GEST/MZ_PUBLIC_SIT_GEST_TEMP';
 
 
 INSERT INTO TABLE CD_IFRS9.MZ_PUBLIC_SIT_GEST_TEMP
-SELECT CTNR.PENUMPER
-       ,MZ02.COD_ENTIDAD
+SELECT CTNR.PENUMPER,
+       MZ02.COD_ENTIDAD
        ,MZ02.COD_CENTRO
        ,MZ02.COD_PRODUCTO
        ,MZ02.COD_SUBPRODU
        ,MZ02.NUM_CUENTA
        ,MZ02.NUM_SECUENCIA_CTO
        ,CTNR.PESUBSEG SUB_SEG                                                          -- SUB_SEGMENTO PESSOA
-       ,CTNR.COD_PRODUCTO COD_PROD                                                     -- CÓDIGO PRODUTO PESSOA
+       ,MZ02.COD_PRODUCTO COD_PROD                                                     -- CÓDIGO PRODUTO PESSOA
        ,MZ02.QT_ARS_PRC_MZ13 DIAS_ATRS                                                 -- DIAS EM ATRASO
        ,((MZ02.VL_ORI_OPR_MZ13 - MZ02.SLD_DVR_OPR_MZ13) + MZ02.SLD_DVR_OPR_MZ13) LIMIT --LIMITES "VL-ORI-OPR-MZ13 - SLD-DVR-OPR-MZ13" + SALDO DEVEDOR"SLD-DVR-OPR-MZ13"
        ,MZ02.SIT_OPR_CDT_MZ13 SIT_OPR
@@ -77,26 +77,14 @@ INNER JOIN
      (
       SELECT PENUMPER
              ,PESUBSEG
-             ,COD_PRODUCTO
-             ,COD_ENTIDAD
-             ,COD_CENTRO
-             ,COD_SUBPRODU
-             ,NUM_CUENTA
-             ,NUM_SECUENCIA_CTO
              ,DT_REFE
       FROM
-           CD_IFRS9.TB_CONS_CNTR_M_6S
+           CD_IFRS9.PER_PE0_0001_M
       WHERE
            DT_REFE = '20170531'
      ) CTNR ON
      (
-          CTNR.COD_ENTIDAD       = MZ02.COD_ENTIDAD
-      AND CTNR.COD_CENTRO        = MZ02.COD_CENTRO
-      AND CTNR.COD_PRODUCTO      = MZ02.COD_PRODUCTO
-      AND CTNR.COD_SUBPRODU      = MZ02.COD_SUBPRODU
-      AND CTNR.NUM_CUENTA        = MZ02.NUM_CUENTA
-      AND CTNR.NUM_SECUENCIA_CTO = MZ02.NUM_SECUENCIA_CTO
-      AND CTNR.DT_REFE           = MZ02.DT_REFE
+       CTNR.DT_REFE = MZ02.DT_REFE
      )
 WHERE
      MZ02.DT_REFE = '20170531'
