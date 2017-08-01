@@ -71,7 +71,7 @@ FROM
       FROM
            CD_IFRS9.INS_MZ0_0002_M
       WHERE
-           DT_REFE = '20170531'
+           DT_REFE = '${hivevar:DT_REFE}'
      ) MZ02
 INNER JOIN
      (
@@ -81,10 +81,11 @@ INNER JOIN
       FROM
            CD_IFRS9.PER_PE0_0001_M
       WHERE
-           DT_REFE = '20170531'
-           -- penumcon = OPERACAO
+           DT_REFE = '${hivevar:DT_REFE}'
      ) PESS 
-     INNER JOIN CD_IFRS9.PER_PE0_0006_M CTNR ON
+     INNER JOIN (select * from CD_IFRS9.PER_PE0_0006_M 
+                 WHERE DT_REFE = '${hivevar:DT_REFE}')
+     CTNR ON
      (  
           PESS.PENUMPER              = CTNR.PENUMPER 
           AND MZ02.COD_ENTIDAD       = CTNR.PECDGENT
@@ -92,10 +93,10 @@ INNER JOIN
           AND MZ02.COD_PRODUCTO      = CTNR.PECODPRO
           AND MZ02.COD_SUBPRODU      = CTNR.PECODSUB
           AND MZ02.NUM_CUENTA        = CTNR.PENUMCON
-          AND MZ02.DT_REFE           = '20170531'
+          AND CTNR.DT_REFE           = '${hivevar:DT_REFE}'
      )
 WHERE
-     MZ02.DT_REFE = '20170531' limit 5
+     MZ02.DT_REFE = '${hivevar:DT_REFE}'
 ;
 
 
@@ -148,7 +149,7 @@ FROM
       FROM
            CD_IFRS9.MZ_PUBLIC_SIT_GEST_TEMP
       WHERE
-           DT_REFE = '20170531'
+           DT_REFE = '${hivevar:DT_REFE}'
      ) MZ_TEMP
 LEFT OUTER JOIN
      (
@@ -165,7 +166,7 @@ LEFT OUTER JOIN
       FROM
            CD_IFRS9.INS_MZ0_0001_M
       WHERE
-           DT_REFE = '20170531'
+           DT_REFE = '${hivevar:DT_REFE}'
      ) MZ01 ON
      (
           MZ_TEMP.COD_ENTIDAD       = MZ01.COD_ENTIDAD
@@ -189,7 +190,7 @@ LEFT OUTER JOIN
       FROM
            CD_IFRS9.EMP_LY0_0001_M
       WHERE
-           DT_REFE = '20170531'
+           DT_REFE = '${hivevar:DT_REFE}'
      ) LY ON
      (
           MZ_TEMP.COD_ENTIDAD       = LY.COD_ENTIDAD
@@ -201,5 +202,5 @@ LEFT OUTER JOIN
       AND MZ_TEMP.DT_REFE           = LY.DT_REFE
      )
 WHERE
-     MZ_TEMP.DT_REFE = '20170531'
+     MZ_TEMP.DT_REFE = '${hivevar:DT_REFE}'
 ;
